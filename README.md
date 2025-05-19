@@ -2,7 +2,8 @@
 OnVerse adalah platform legal untuk membaca komik dan novel digital seperti manga, manhwa, dan manhua. OnVerse mendukung kreator baru dan profesional untuk mempublikasikan karya mereka. Fitur seperti sistem koin, login harian, kategori karya terbaik, dan forum komunitas memberikan pengalaman membaca yang praktis dan interaktif.
 
 **Menu Utama**
-**- User : **
+
+**-User :**
 1. User dapat mendaftar dan login
 2. User dapat menjelajahi komik dan novel
 3. User dapat membaca bab gratis
@@ -16,7 +17,7 @@ OnVerse adalah platform legal untuk membaca komik dan novel digital seperti mang
 11. User dapat mengakses Community Hub
 12. User dapat berdiskusi di komunitas
 
-**- Creator : **
+**-Creator :**
 1. Creator dapat mendaftar dan login
 2. Creator dapat mempublikasikan konten (komik/novel)
 3. Creator dapat mengelola unggahan konten
@@ -24,7 +25,7 @@ OnVerse adalah platform legal untuk membaca komik dan novel digital seperti mang
 5. Creator dapat melihat statistik dan analitik karya
 6. Creator dapat berpartisipasi dalam diskusi komunitas
 
-**- Admin : **
+**-Admin :**
 1. Admin dapat login
 2. Admin dapat memverifikasi kreator
 3. Admin dapat mengatur komunitas
