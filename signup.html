@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONVERSE - Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .signup-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 56, 180, 0.3);
+            width: 350px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .signup-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 5px;
+            margin-bottom: 20px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #4285f4;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+
+        .terms-text {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .terms-text a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        .signup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .kembali-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #e0e0e0;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .signup-submit-btn {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 20px;
+            background-color: #4285f4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .kembali-btn:hover {
+            background-color: #d0d0d0;
+        }
+
+        .signup-submit-btn:hover {
+            background-color: #3b78e7;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="logo-container">
+            <div class="logo-text">ONVERSE</div>
+        </div>
+        
+        <div class="signup-title">Signup</div>
+        
+        <form id="signup-form">
+            <input type="email" class="input-field" placeholder="Masukkan Email" required>
+            <input type="password" class="input-field" placeholder="Masukkan Password" required>
+            <input type="password" class="input-field" placeholder="Konfirmasi Password" required>
+            <input type="text" class="input-field" placeholder="Username" required>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="terms" required>
+                <label for="terms" class="terms-text">Syarat dan Ketentuan <a href="#">ONVERSE</a></label>
+            </div>
+            
+            <div class="signup-buttons">
+                <button type="button" class="kembali-btn" onclick="window.location.href='HomePage.html'">Kembali</button>
+                <button type="submit" class="signup-submit-btn">Signup</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const password = document.querySelector('input[type="password"]');
+            const confirmPassword = document.querySelectorAll('input[type="password"]')[1];
+            
+            if (password.value !== confirmPassword.value) {
+                alert('Password tidak cocok!');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('Anda harus menyetujui Syarat dan Ketentuan!');
+                return;
+            }
+            
+            alert('Akun berhasil dibuat!');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
