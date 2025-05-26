@@ -23,3 +23,8 @@ document.querySelector('.login-modal-btn').addEventListener('click', function() 
 document.querySelector('.signup-btn').addEventListener('click', function() {
     window.location.href = 'signup.html';
 });
+
+// Event listener untuk tombol top up coin
+document.querySelector('.topup-btn').addEventListener('click', function() {
+    window.location.href = 'topup.html';
+});
