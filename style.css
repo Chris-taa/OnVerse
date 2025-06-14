@@ -32,12 +32,13 @@ header {
     gap: 10px;
 }
 
-.login-btn, .signup-btn {
+.login-btn, .signup-btn, .topup-btn, .buatkarya-btn {
     padding: 6px 12px;
     border: none;
     border-radius: 4px;
     font-size: 12px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .login-btn {
@@ -48,6 +49,16 @@ header {
 .signup-btn {
     background-color: white;
     color: #4285f4;
+}
+
+.topup-btn {
+    background-color: #3E41FF;
+    color: white;
+}
+
+.buatkarya-btn {
+    background-color: #FF5722;
+    color: white; 
 }
 
 .menu-icon {

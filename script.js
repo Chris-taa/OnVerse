@@ -28,3 +28,8 @@ document.querySelector('.signup-btn').addEventListener('click', function() {
 document.querySelector('.topup-btn').addEventListener('click', function() {
     window.location.href = 'topup.html';
 });
+
+// Event listener untuk tombol buat karya
+document.querySelector('.buatkarya-btn').addEventListener('click', function() {
+    window.location.href = 'buatkarya.html';
+});
