@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Karya Baru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/create-karya.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <div class="container">
+        <button class="btn-kembali" onclick="history.back()">Kembali</button>
+        <div class="card">
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x50?text=INVERSE" alt="Inverse Logo">
+                <p>EXPLORE, READ, AND CREATE!</p>
+            </div>
+            <h1>Judul: Judul Karya</h1>
+
+            <div class="form-section thumbnail-section">
+                <h2>Thumbnail</h2>
+                <div class="thumbnail-upload-box">
+                    <i data-feather="upload-cloud"></i>
+                    <p>Pilih gambar untuk diunggah</p>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Judul Chapter</h2>
+                <input type="text" class="text-input" placeholder="Masukkan judul chapter...">
+            </div>
+
+            <div class="form-section upload-section">
+                <h2>Unggah Gambar</h2>
+                <div class="upload-buttons">
+                    <button class="btn-upload">Pilih file untuk diunggah</button>
+                    <button class="btn-delete">Hapus</button>
+                </div>
+                <p class="upload-hint">*File yang diterima berupa PDF</p>
+            </div>
+
+            <div class="form-section comment-section">
+                <h2>Kolom Komentar</h2>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="comment_status" value="on" checked> Nyala
+                    </label>
+                    <label>
+                        <input type="radio" name="comment_status" value="off"> Mati
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section publish-section">
+                <h2>Terbitkan</h2>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="publish_type" value="now" checked> Sekarang
+                    </label>
+                    <label>
+                        <input type="radio" name="publish_type" value="schedule"> Jadwalkan
+                    </label>
+                </div>
+                <div class="schedule-inputs">
+                    <input type="date" class="date-input">
+                    <input type="time" class="time-input">
+                    <span class="colon">:</span>
+                    <input type="number" class="minute-input" min="0" max="59" value="00" placeholder="Menit">
+                </div>
+            </div>
+
+            <button class="btn-publish">Terbitkan</button>
+        </div>
+    </div>
+
+    <script>
+        feather.replace(); // Initialize feather icons
+
+        // Optional: Hide/show schedule inputs based on radio button selection
+        const publishTypeRadios = document.querySelectorAll('input[name="publish_type"]');
+        const scheduleInputs = document.querySelector('.schedule-inputs');
+
+        function toggleScheduleInputs() {
+            if (document.querySelector('input[name="publish_type"]:checked').value === 'schedule') {
+                scheduleInputs.style.display = 'flex';
+            } else {
+                scheduleInputs.style.display = 'none';
+            }
+        }
+
+        publishTypeRadios.forEach(radio => {
+            radio.addEventListener('change', toggleScheduleInputs);
+        });
+
+        // Initial call to set correct visibility on page load
+        toggleScheduleInputs();
+
+        // Optional: Handle file upload button click for demonstration
+        document.querySelector('.btn-upload').addEventListener('click', () => {
+            alert('File upload functionality would be implemented here!');
+        });
+    </script>
+</body>
+</html>

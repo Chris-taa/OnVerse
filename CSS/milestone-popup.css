@@ -1,0 +1,153 @@
+/* Pop-up Overlay */
+.popup-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+
+  /* Animasi untuk overlay */
+  opacity: 0; /* Mulai dengan opacity 0 */
+  transition: opacity 0.3s ease-in-out; /* Transisi opacity */
+}
+
+/* Saat pop-up aktif (ditampilkan oleh JS) */
+.popup-overlay.active {
+  opacity: 1; /* Tampilkan overlay */
+}
+
+/* Pop-up Content */
+.popup-content {
+  background-color: #f8f8f8; /* Lighter background for the pop-up itself */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 500px; /* Max width for the pop-up */
+  position: relative;
+  border: 3px solid #66b3ff; /* Blue border like in the image */
+  background-image: url("../IMG/background.png");
+  background-size: 100px 100px; /* Adjust pattern size */
+  background-repeat: repeat;
+
+  /* Animasi untuk konten pop-up */
+  transform: translateY(50px); /* Mulai sedikit di bawah */
+  opacity: 0; /* Mulai dengan opacity 0 */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Transisi untuk slide dan fade */
+}
+
+/* Saat pop-up aktif (ditampilkan oleh JS) */
+.popup-overlay.active .popup-content {
+  transform: translateY(0); /* Geser ke posisi normal */
+  opacity: 1; /* Tampilkan konten */
+}
+
+.popup-content h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Space between items */
+  margin-bottom: 30px;
+}
+
+.milestone-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.milestone-item:hover {
+  transform: translateY(-5px);
+}
+
+.milestone-item img {
+  width: 60px; /* Size of the coin images */
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 50%; /* Make it circular if your images are square */
+  border: 2px solid #ffcc00; /* Gold border for coins */
+}
+
+.milestone-time {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.claim-button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 25px; /* Rounded button */
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.claim-button:hover {
+  background-color: #0056b3;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Make images responsive */
+@media (max-width: 768px) {
+  .milestone-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .milestone-grid {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+  .popup-content {
+    padding: 20px;
+  }
+  .popup-content h2 {
+    font-size: 24px;
+  }
+  .claim-button {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+}

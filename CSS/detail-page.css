@@ -1,0 +1,259 @@
+/* Import font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #4CAF50; /* Contoh warna hijau untuk highlight/aktif */
+    --text-color: #333;
+    --light-gray: #f0f0f0;
+    --dark-gray: #555;
+    --border-color: #e0e0e0;
+}
+
+/* Pastikan body margin dan padding 0 untuk layout full-width */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Background yang lebih terang dari gambar */
+    /* Contoh background motif dari gambar Anda */
+    background-image: url('../IMG/background-motif.png'); /* Ganti dengan path gambar motif Anda */
+    background-repeat: repeat;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.navbar{
+    height: 47px;
+}
+
+/* Styling navbar umum (jika tidak ada di landing.css, bisa dipindahkan ke sini) */
+/* Saya asumsikan styling navbar dasar Anda sudah ada di landing.css */
+/* Contoh properti penting untuk navbar agar stabil tingginya: */
+/*
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; // Tinggi navbar yang konsisten
+    padding: 0 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.navbar-logo {
+    height: 40px; // Sesuaikan ukuran logo
+}
+.navbar-extra {
+    display: flex;
+    align-items: center;
+    gap: 15px; // Jarak antar elemen di navbar-extra (tombol, profil, hamburger)
+}
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.username {
+    line-height: 1; // Penting untuk menjaga tinggi teks
+    color: black;
+}
+*/
+
+
+.container {
+    max-width: 1200px; /* Lebar maksimal konten */
+    margin: 20px auto; /* Margin atas-bawah dan auto kiri-kanan untuk tengah */
+    padding: 20px;
+    background-color: #fff; /* Background putih untuk area konten utama */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Kolom kiri (main-content) 2x lebih lebar dari kolom kanan (sidebar-info) */
+    gap: 30px; /* Jarak antar kolom */
+}
+
+.synopsis-box {
+    margin-top: 40px;
+    background-color: var(--light-gray); /* Background abu-abu terang untuk kotak */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Jarak antar kotak */
+}
+
+/* New style for comic cover box */
+.comic-cover-box {
+    margin-top: 40px; /* Aligns with the synopsis box */
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 300px; /* Fixed height for the cover container, adjust as needed */
+    margin-bottom: 20px;
+}
+
+.comic-cover-image {
+    max-width: 100%; /* Ensure image fits within its container */
+    max-height: 100%; /* Ensure image fits within its container */
+    border-radius: 4px; /* Optional: slight border-radius for the image */
+    object-fit: contain; /* Ensures the entire image is visible, even if it adds letterboxing */
+}
+
+
+.info-box {
+    margin-top: 0; /* Remove top margin as it will be stacked below the cover */
+    background-color: var(--light-gray); /* Background abu-abu terang untuk kotak */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Jarak antar kotak */
+}
+/* Apply top margin to the first info-box after the comic cover */
+.sidebar-info .info-box:first-of-type {
+    margin-top: 20px; /* Add margin to separate it from the cover */
+}
+
+
+.synopsis-box h2,
+.info-box h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+}
+
+.synopsis-box p {
+    font-size: 0.95em;
+    color: var(--dark-gray);
+}
+
+/* Daftar Chapter */
+.chapter-list {
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    padding: 10px 20px; /* Padding vertikal sedikit lebih kecil */
+
+    /* === PENTING: Styling untuk scrolling === */
+    max-height: 400px; /* Atur tinggi maksimum yang Anda inginkan */
+    overflow-y: auto;  /* Aktifkan scroll vertikal jika konten melebihi max-height */
+    -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih halus di iOS */
+}
+
+/* Styling scrollbar (opsional, hanya untuk browser WebKit seperti Chrome, Safari) */
+.chapter-list::-webkit-scrollbar {
+    width: 8px;
+}
+.chapter-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.chapter-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.chapter-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Styling scrollbar untuk Firefox (lebih terbatas) */
+/* .chapter-list {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+} */
+
+
+.chapter-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color); /* Garis pemisah antar chapter */
+    cursor: pointer; /* Menunjukkan bahwa item bisa diklik */
+    transition: background-color 0.2s ease;
+}
+
+.chapter-item:last-child {
+    border-bottom: none; /* Hapus garis di item terakhir */
+}
+
+.chapter-item:hover {
+    background-color: #e8e8e8; /* Warna saat dihover */
+}
+
+
+.chapter-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    flex-grow: 1; /* Biar mengambil ruang sebanyak mungkin */
+}
+
+.chapter-date {
+    font-size: 0.85em;
+    color: var(--dark-gray);
+    margin-right: 20px; /* Jarak dari info views/premium */
+    white-space: nowrap; /* Mencegah tanggal pecah baris */
+}
+
+.chapter-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara views dan ikon premium */
+}
+
+.chapter-info .views {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: var(--dark-gray);
+    white-space: nowrap; /* Mencegah views pecah baris */
+}
+
+.chapter-info .icon-heart {
+    width: 18px; /* Ukuran ikon hati */
+    height: 18px;
+    margin-right: 5px;
+    color: #ff6b6b; /* Warna ikon hati, misal merah */
+}
+
+.chapter-info .icon-premium {
+    width: 20px; /* Ukuran ikon mahkota */
+    height: 20px;
+    color: gold; /* Warna ikon mahkota */
+}
+
+/* Sidebar Info (Genre & Author) */
+/* .sidebar-info { } */ /* Tidak perlu styling khusus jika hanya sebagai kontainer grid */
+
+
+/* Elemen .pagination DIHAPUS dari HTML, jadi semua CSS ini juga dihapus */
+/*
+.pagination { ... }
+.pagination .page-number { ... }
+.pagination .page-number.active { ... }
+.pagination .page-number:hover:not(.active) { ... }
+*/
+
+/* Responsif Dasar */
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr; /* Tumpuk kolom di layar kecil */
+    }
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    .chapter-date {
+        margin-right: 10px; /* Kurangi jarak di mobile */
+    }
+    .comic-cover-box {
+        height: 250px; /* Adjust height for smaller screens */
+        margin-top: 20px;
+    }
+    .sidebar-info .info-box:first-of-type {
+        margin-top: 15px; /* Adjust margin for smaller screens */
+    }
+}

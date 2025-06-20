@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre - INVERSE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/genre-page.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="navbar-left">
+            <a href="#" class="navbar-logo">
+                <img src="https://via.placeholder.com/100x30?text=INVERSE" alt="Inverse Logo">
+                <p>Explore, Read, and Create!</p>
+            </a>
+        </div>
+        <nav class="navbar-center">
+            <a href="#" class="nav-item active">GENRE</a>
+            <a href="#" class="nav-item">POPULER</a>
+            </nav>
+        <div class="navbar-right">
+            <button class="auth-btn sign-in">Sign-In</button>
+            <button class="auth-btn sign-up">Sign-Up</button>
+            <button class="hamburger-menu">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="genre-filter-section">
+            <div class="genre-heading">
+                <h2>Genre</h2>
+            </div>
+            <div class="genre-buttons-container" id="genreButtons">
+                <button class="genre-button active" data-genre="all">Semua</button>
+                <button class="genre-button" data-genre="action">Action</button>
+                <button class="genre-button" data-genre="romance">Romance</button>
+                <button class="genre-button" data-genre="comedy">Comedy</button>
+                <button class="genre-button" data-genre="drama">Drama</button>
+                <button class="genre-button" data-genre="fantasy">Fantasy</button>
+                <button class="genre-button" data-genre="horror">Horror</button>
+                <button class="genre-button" data-genre="slice of life">Slice of Life</button>
+                <button class="genre-button" data-genre="adventure">Adventure</button>
+                <button class="genre-button" data-genre="mystery">Mystery</button>
+                <button class="genre-button" data-genre="sci-fi">Sci-Fi</button>
+                <button class="genre-button" data-genre="thriller">Thriller</button>
+                <button class="genre-button" data-genre="supernatural">Supernatural</button>
+                <button class="genre-button" data-genre="historical">Historical</button>
+                <button class="genre-button" data-genre="sports">Sports</button>
+                <button class="genre-button" data-genre="music">Music</button>
+                <button class="genre-button" data-genre="mecha">Mecha</button>
+                <button class="genre-button" data-genre="isekai">Isekai</button>
+                <button class="genre-button" data-genre="psychological">Psychological</button>
+                <button class="genre-button" data-genre="school life">School Life</button>
+                <button class="genre-button" data-genre="superhero">Superhero</button>
+            </div>
+        </section>
+
+        <section class="works-display-section">
+            <div class="works-grid" id="worksGrid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="#"><i data-feather="instagram"></i></a>
+            <a href="#"><i data-feather="linkedin"></i></a>
+            <a href="#"><i data-feather="github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace(); // Initialize feather icons
+
+        // Sample comic data (In a real app, this would come from an API)
+        const comicsData = [
+            { id: 1, title: 'A Couple of Cuckoos', subtitle: 'Judul Komik 5', author: 'Author 5', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+5', genres: ['action', 'fantasy', 'adventure'] },
+            { id: 2, title: 'Another Fantasy Story', subtitle: 'Judul Komik 6', author: 'Author 6', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+6', genres: ['fantasy', 'romance'] },
+            { id: 3, title: 'Mystery of the Old House', subtitle: 'Judul Komik 7', author: 'Author 7', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+7', genres: ['mystery', 'thriller'] },
+            { id: 4, title: 'Daily Slice', subtitle: 'Judul Komik 8', author: 'Author 8', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+8', genres: ['slice of life', 'comedy'] },
+            { id: 5, title: 'Hero Academia', subtitle: 'Judul Komik 9', author: 'Author 9', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+9', genres: ['action', 'superhero'] },
+            { id: 6, title: 'Love Song', subtitle: 'Judul Komik 10', author: 'Author 10', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+10', genres: ['romance', 'music'] },
+            { id: 7, title: 'Mecha Battle Royale', subtitle: 'Judul Komik 11', author: 'Author 11', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+11', genres: ['mecha', 'action'] },
+            { id: 8, title: 'Isekai Dungeon', subtitle: 'Judul Komik 12', author: 'Author 12', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+12', genres: ['isekai', 'fantasy'] },
+            { id: 9, title: 'The Mind Game', subtitle: 'Judul Komik 13', author: 'Author 13', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+13', genres: ['psychological', 'drama'] },
+            { id: 10, title: 'High School Life', subtitle: 'Judul Komik 14', author: 'Author 14', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+14', genres: ['school life', 'comedy', 'slice of life'] },
+            { id: 11, title: 'Ancient Tales', subtitle: 'Judul Komik 15', author: 'Author 15', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+15', genres: ['historical', 'adventure'] },
+            { id: 12, title: 'Beyond the Stars', subtitle: 'Judul Komik 16', author: 'Author 16', img: 'https://via.placeholder.com/150x200/cccccc/888888?text=Komik+16', genres: ['sci-fi', 'adventure'] }
+        ];
+
+        const worksGrid = document.getElementById('worksGrid');
+        const genreButtonsContainer = document.getElementById('genreButtons');
+        let currentActiveGenre = 'all'; // Keep track of the currently active genre
+
+        // Function to create a comic card HTML element
+        function createComicCard(comic) {
+            const card = document.createElement('div');
+            card.classList.add('comic-card');
+            // Store genres as a data attribute, space-separated for easy splitting
+            card.dataset.genres = comic.genres.join(' ');
+
+            card.innerHTML = `
+                <img src="${comic.img}" alt="Comic Cover">
+                <h3>${comic.title}</h3>
+                <p class="comic-title-id">${comic.subtitle}</p>
+                <p class="comic-author">${comic.author}</p>
+            `;
+            return card;
+        }
+
+        // Function to render comics based on filter
+        function renderComics(filterGenre) {
+            worksGrid.innerHTML = ''; // Clear existing cards
+            comicsData.forEach(comic => {
+                // If filter is 'all' or comic's genres include the filterGenre
+                if (filterGenre === 'all' || comic.genres.includes(filterGenre)) {
+                    worksGrid.appendChild(createComicCard(comic));
+                }
+            });
+        }
+
+        // Function to handle genre button clicks
+        function handleGenreButtonClick(event) {
+            const clickedButton = event.target.closest('.genre-button');
+            if (!clickedButton) return; // Ensure a genre button was clicked
+
+            // Remove active class from previous active button
+            const previouslyActive = genreButtonsContainer.querySelector('.genre-button.active');
+            if (previouslyActive) {
+                previouslyActive.classList.remove('active');
+            }
+
+            // Add active class to the clicked button
+            clickedButton.classList.add('active');
+            currentActiveGenre = clickedButton.dataset.genre; // Update active genre
+
+            renderComics(currentActiveGenre); // Render comics based on new filter
+        }
+
+        // Add event listener to the genre buttons container
+        genreButtonsContainer.addEventListener('click', handleGenreButtonClick);
+
+        // Initial render: show all comics when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            renderComics('all');
+        });
+    </script>
+</body>
+</html>

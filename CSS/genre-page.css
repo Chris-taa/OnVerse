@@ -1,0 +1,391 @@
+:root {
+    --primary-blue: #007bff; /* Example: Blue for active states/buttons */
+    --light-blue: #e0f2ff;
+    --dark-blue: #0056b3;
+    --text-color: #333;
+    --light-gray: #f8f8f8;
+    --medium-gray: #eee;
+    --dark-gray: #555;
+    --border-color: #ddd;
+    --card-bg: #fff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Lighter background */
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Ensure footer is at the bottom */
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.navbar-logo img {
+    height: 25px; /* Adjust as needed */
+    margin-bottom: 3px;
+}
+
+.navbar-logo p {
+    font-size: 0.7em;
+    margin: 0;
+    color: var(--dark-gray);
+    white-space: nowrap;
+}
+
+.navbar-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item.active {
+    color: var(--primary-blue);
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-blue);
+    border-radius: 2px;
+}
+
+.nav-item:hover:not(.active) {
+    color: var(--primary-blue);
+}
+
+.auth-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.auth-btn.sign-in {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+}
+
+.auth-btn.sign-in:hover {
+    background-color: var(--light-blue);
+}
+
+.auth-btn.sign-up {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+.auth-btn.sign-up:hover {
+    background-color: var(--dark-blue);
+}
+
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* Hide by default, show on mobile */
+}
+
+.hamburger-menu svg {
+    width: 24px;
+    height: 24px;
+    color: var(--dark-gray);
+}
+
+
+/* Main Container */
+.container {
+    flex-grow: 1; /* Allow container to take available space */
+    max-width: 1300px; /* Increased max-width */
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    gap: 30px;
+}
+
+/* Genre Filter Section */
+.genre-filter-section {
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.genre-heading h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.genre-buttons-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+    gap: 12px; /* Space between buttons */
+    justify-content: center; /* Center buttons */
+}
+
+.genre-button {
+    background-color: var(--medium-gray);
+    color: var(--dark-gray);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.genre-button:hover {
+    background-color: #ccc;
+    color: var(--text-color);
+}
+
+.genre-button.active {
+    background-color: var(--primary-blue);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.genre-button.active:hover {
+    background-color: var(--dark-blue);
+    color: #fff;
+}
+
+/* Works Display Section (Comic Cards) */
+.works-display-section {
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between cards */
+    justify-items: center; /* Center cards in their grid cells */
+}
+
+.comic-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden; /* Ensures image corners are rounded */
+    text-align: center;
+    padding-bottom: 15px; /* Space for text below image */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%; /* Ensure card takes full width of its minmax */
+    max-width: 180px; /* Max width for a single card */
+}
+
+.comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.comic-card img {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent image size */
+    object-fit: cover; /* Cover the area, crop if necessary */
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
+}
+
+.comic-card h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 10px 5px;
+    white-space: nowrap; /* Prevent title from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+}
+
+.comic-card .comic-title-id {
+    font-size: 0.85em;
+    color: var(--dark-gray);
+    margin: 0 10px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.comic-card .comic-author {
+    font-size: 0.8em;
+    color: #777;
+    margin: 0 10px;
+}
+
+/* Hidden class for filtering */
+.comic-card.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-blue);
+    padding: 20px 40px;
+    text-align: center;
+    margin-top: 40px; /* Space above footer */
+}
+
+.footer-icons a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+    color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar-center {
+        gap: 20px;
+    }
+    .auth-btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    .works-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 20px;
+    }
+    .comic-card img {
+        height: 190px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-center {
+        display: none; /* Hide nav items on smaller screens */
+    }
+    .hamburger-menu {
+        display: block; /* Show hamburger menu */
+    }
+    .navbar-right {
+        gap: 10px;
+    }
+    .navbar-left {
+        width: 100%;
+        justify-content: center; /* Center logo on smaller screens */
+    }
+    .navbar-logo {
+        align-items: center; /* Center logo text below image */
+    }
+    .container {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+    .genre-filter-section, .works-display-section {
+        padding: 20px;
+    }
+    .genre-heading h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    .genre-buttons-container {
+        gap: 10px;
+    }
+    .genre-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .works-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+    .comic-card {
+        max-width: 150px; /* Adjust max-width for very small screens */
+    }
+    .comic-card img {
+        height: 160px;
+    }
+    .comic-card h3 {
+        font-size: 1em;
+    }
+    .comic-card .comic-title-id,
+    .comic-card .comic-author {
+        font-size: 0.75em;
+    }
+    .footer {
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+    .genre-button {
+        padding: 7px 12px;
+        font-size: 0.8em;
+    }
+    .works-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    .comic-card img {
+        height: 140px;
+    }
+}

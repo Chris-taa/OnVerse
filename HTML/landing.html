@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnVerse</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="../css/landing.css" />
+    <link rel="stylesheet" href="../css/milestone-popup.css" />
+  </head>
+
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="#">View All Works</a>
+      <a href="#">Daily Login</a>
+      <a href="#" id="openMilestonePopupBtn">Daily Milestones</a>
+      <a href="#">This Week's Popular</a>
+      <a href="#">Premium</a>
+      <a href="#">Community</a>
+      <a href="ProfilePage.html">My Account</a>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    <section class="banner">
+      <img src="../IMG/banner.png" alt="Banner" class="banner-image" />
+      <div class="banner-carousel"></div>
+    </section>
+
+    <section class="content">
+      <div class="days">
+        <a href="#sunday" class="day" data-day="Sunday">SUN</a>
+        <a href="#monday" class="day" data-day="Monday">MON</a>
+        <a href="#tuesday" class="day" data-day="Tuesday">TUE</a>
+        <a href="#wednesday" class="day" data-day="Wednesday">WED</a>
+        <a href="#thursday" class="day" data-day="Thursday">THU</a>
+        <a href="#friday" class="day" data-day="Friday">FRI</a>
+        <a href="#saturday" class="day" data-day="Saturday">SAT</a>
+      </div>
+    </section>
+
+    <section class="daily">
+      <div class="comic-list">
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 1" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 1</h3>
+            <p class="comic-author">Author 1</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 2" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 2</h3>
+            <p class="comic-author">Author 2</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 3" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 3</h3>
+            <p class="comic-author">Author 3</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 4" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 4</h3>
+            <p class="comic-author">Author 4</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 5" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 5</h3>
+            <p class="comic-author">Author 5</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 6" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 6</h3>
+            <p class="comic-author">Author 6</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 7" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 7</h3>
+            <p class="comic-author">Author 7</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 8" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 8</h3>
+            <p class="comic-author">Author 8</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="karya-baru">
+      <h1>New Creation For You</h1>
+
+      <div class="comic-list">
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 1" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 1</h3>
+            <p class="comic-author">Author 1</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 2" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 2</h3>
+            <p class="comic-author">Author 2</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 3" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 3</h3>
+            <p class="comic-author">Author 3</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 4" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 4</h3>
+            <p class="comic-author">Author 4</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 5" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 5</h3>
+            <p class="comic-author">Author 5</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 6" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 6</h3>
+            <p class="comic-author">Author 6</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 7" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 7</h3>
+            <p class="comic-author">Author 7</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+        <a href="detail-page.html" class="comic-card-link">
+          <div class="comic-card">
+            <img src="../IMG/cover.jpg" alt="Comic 8" class="comic-cover" />
+            <h3 class="comic-title">Judul Komik 8</h3>
+            <p class="comic-author">Author 8</p>
+            <div class="comic-desc">Ini adalah deskripsinya</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="genre">
+      <h1>Genre</h1>
+
+      <div class="genre-buttons">
+        <button class="genre-btn" type="button">Action</button>
+        <button class="genre-btn" type="button">Romance</button>
+        <button class="genre-btn" type="button">Comedy</button>
+        <button class="genre-btn" type="button">Drama</button>
+        <button class="genre-btn" type="button">Fantasy</button>
+        <button class="genre-btn" type="button">Horror</button>
+        <button class="genre-btn" type="button">Slice of Life</button>
+        <button class="genre-btn" type="button">Adventure</button>
+        <button class="genre-btn" type="button">Mystery</button>
+        <button class="genre-btn" type="button">Sci-Fi</button>
+        <button class="genre-btn" type="button">Thriller</button>
+        <button class="genre-btn" type="button">Supernatural</button>
+        <button class="genre-btn" type="button">Historical</button>
+        <button class="genre-btn" type="button">Sports</button>
+        <button class="genre-btn" type="button">Music</button>
+        <button class="genre-btn" type="button">Mecha</button>
+        <button class="genre-btn" type="button">Isekai</button>
+        <button class="genre-btn" type="button">Psychological</button>
+        <button class="genre-btn" type="button">School Life</button>
+        <button class="genre-btn" type="button">Superhero</button>
+      </div>
+    </section>
+
+    <div class="language-menu" id="languageMenu">
+      <div class="language-item">
+        <img
+          src="https://flagcdn.com/w40/jp.png"
+          alt="Japanese"
+          title="Japanese"
+        />
+      </div>
+      <div class="language-item">
+        <img src="https://flagcdn.com/w40/kr.png" alt="Korean" title="Korean" />
+      </div>
+      <div class="language-item">
+        <img
+          src="https://flagcdn.com/w40/cn.png"
+          alt="Chinese"
+          title="Chinese"
+        />
+      </div>
+      <div class="language-item">
+        <img
+          src="https://flagcdn.com/w40/id.png"
+          alt="Indonesian"
+          title="Indonesian"
+        />
+      </div>
+    </div>
+
+    <a class="show-button" id="showButton" style="display: none">
+      <i data-feather="chevrons-right"></i>
+    </a>
+
+    <div id="footer-placeholder"></div>
+    <div id="milestonePopup" class="popup-overlay">
+      <div class="popup-content">
+        <h2>Daily Milestones</h2>
+
+        <div class="milestone-grid">
+          <div class="milestone-item">
+            <img src="../IMG/Coin.png" alt="5 koin" />
+            <div class="milestone-amount">5 Coins</div>
+            <div class="milestone-time">30 minutes</div>
+          </div>
+          <div class="milestone-item">
+            <img src="../IMG/Coin.png" alt="10 koin" />
+            <div class="milestone-amount">10 Coins</div>
+            <div class="milestone-time">60 minutes</div>
+          </div>
+          <div class="milestone-item">
+            <img src="../IMG/Coin.png" alt="15 koin" />
+            <div class="milestone-amount">15 Coins</div>
+            <div class="milestone-time">90 minutes</div>
+          </div>
+          <div class="milestone-item">
+            <img src="../IMG/Coin.png" alt="20 koin" />
+            <div class="milestone-amount">20 Coin</div>
+            <div class="milestone-time">120 minutes</div>
+          </div>
+          <div class="milestone-item">
+            <img src="../IMG/Coin.png" alt="25 koin" />
+            <div class="milestone-amount">25 Coin</div>
+            <div class="milestone-time">150 minutes</div>
+          </div>
+          <div class="milestone-item">
+            <img src="../IMG/Coin.png" alt="30 koin" />
+            <div class="milestone-amount">30 Coin</div>
+            <div class="milestone-time">180 minutes</div>
+          </div>
+        </div>
+
+        <button class="claim-button">Claim</button>
+        <span class="close-button">&times;</span>
+      </div>
+    </div>
+    <script src="../JS/script.js"></script>
+    <script src="../JS/milestone-popup.js"></script>
+  </body>
+</html>

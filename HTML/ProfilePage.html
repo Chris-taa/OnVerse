@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONVERSE - Edit Profile</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        /* Container */
+        .profile-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 56, 180, 0.5);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Profile Picture */
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #666;
+            border: 3px solid #f0f0f0;
+            overflow: hidden;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edit-btn {
+            background: none;
+            border: none;
+            color: #4285f4;
+            font-size: 12px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            color: #3b78e7;
+        }
+
+        /* Profile Info */
+        .profile-info {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .info-value {
+            color: #666;
+            font-size: 14px;
+            text-align: right;
+            flex: 1;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .info-value:hover {
+            color: #4285f4;
+        }
+
+        .password-value {
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        .status-badge {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .profile-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .back-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background-color: #e0e0e0;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .confirm-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            background-color: #4285f4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background-color: #d0d0d0;
+            transform: translateY(-1px);
+        }
+
+        .confirm-btn:hover {
+            background-color: #3b78e7;
+            transform: translateY(-1px);
+        }
+
+        /* Edit Form Styles */
+        .form-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #f0f0f0;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .input-field:focus {
+            background-color: #e8e8e8;
+        }
+
+        .input-field::placeholder {
+            color: #999;
+        }
+
+        /* Photo Upload Styles */
+        .photo-container {
+            margin-bottom: 30px;
+        }
+
+        .photo-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid #e0e0e0;
+        }
+
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-preview .placeholder {
+            color: #999;
+            font-size: 48px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-button {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #f0f0f0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .file-button:hover {
+            background-color: #e8e8e8;
+        }
+
+        .file-button.selected {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .link {
+            display: block;
+            color: #4285f4;
+            font-size: 14px;
+            text-decoration: underline;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .link:hover {
+            color: #3b78e7;
+        }
+
+        @media (max-width: 480px) {
+            .profile-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .profile-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .back-btn, .confirm-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Main Profile Page -->
+        <div class="section active" id="profile-page">
+            <div class="profile-picture" id="mainProfilePicture">
+                <img src = "../IMG/pp.jpg" alt="Profile Photo">
+            </div>
+            <button class="edit-btn" onclick="showSection('upload-photo')">Edit ></button>
+            
+            <div class="profile-info">
+                <div class="info-row">
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value" onclick="showSection('update-fullname')">fullnameUser ></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Username</span>
+                    <span class="info-value" onclick="showSection('update-username')">Username ></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email</span>
+                    <span class="info-value" onclick="showSection('edit-email')">emailUser ></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Password</span>
+                    <span class="info-value password-value" onclick="showSection('change-password')">******** ></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Gender</span>
+                    <span class="info-value">genderUser</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Age</span>
+                    <span class="info-value">usiaUser</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Status</span>
+                    <span class="info-value">
+                        <span class="status-badge">statusKreator</span>
+                    </span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Country</span>
+                    <span class="info-value">negaraUser</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Created at</span>
+                    <span class="info-value">tglDibuat</span>
+                </div>
+            </div>
+
+            <div class="profile-buttons">
+                <button  class="back-btn" onclick="goBack()">Back</button>
+                <button class="confirm-btn" onclick="confirmProfile()">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Upload Photo -->
+        <div class="section" id="upload-photo">
+            <h2 class="form-title">Upload Photo</h2>
+            <div class="photo-container">
+                <div class="photo-preview" id="photoPreview">
+                    <span class="material-icons placeholder">person</span>
+                </div>
+                <input type="file" id="photoInput" class="file-input" accept="image/*">
+                <button type="button" class="file-button" onclick="document.getElementById('photoInput').click()">
+                    Choose Photo
+                </button>
+            </div>
+            <div class="profile-buttons">
+                <button class="back-btn" onclick="showSection('profile-page')">Back</button>
+                <button class="confirm-btn" onclick="confirmChange('photo')">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Update Username -->
+        <div class="section" id="update-username">
+            <h2 class="form-title">Update Username</h2>
+            <input type="text" class="input-field" placeholder="Current Username" readonly id="currentUsername">
+            <input type="text" class="input-field" placeholder="New Username" id="newUsername">
+            <div class="profile-buttons">
+                <button class="back-btn" onclick="showSection('profile-page')">Back</button>
+                <button class="confirm-btn" onclick="confirmChange('username')">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Update Full Name -->
+        <div class="section" id="update-fullname">
+            <h2 class="form-title">Update Full Name</h2>
+            <input type="text" class="input-field" placeholder="New Full Name" id="newFullname">
+            <div class="profile-buttons">
+                <button class="back-btn" onclick="showSection('profile-page')">Back</button>
+                <button class="confirm-btn" onclick="confirmChange('fullname')">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Edit Email -->
+        <div class="section" id="edit-email">
+            <h2 class="form-title">Update Email</h2>
+            <input type="email" class="input-field" placeholder="New Email" id="newEmail">
+            <div class="profile-buttons">
+                <button class="back-btn" onclick="showSection('profile-page')">Back</button>
+                <button class="confirm-btn" onclick="confirmChange('email')">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Change Password -->
+        <div class="section" id="change-password">
+            <h2 class="form-title">Change Password</h2>
+            <input type="password" class="input-field" placeholder="Current Password" id="currentPassword">
+            <input type="password" class="input-field" placeholder="New Password" id="newPassword">
+            <a href="#" class="link" onclick="showSection('forgot-password')">Forget Password?</a>
+            <div class="profile-buttons">
+                <button class="back-btn" onclick="showSection('profile-page')">Back</button>
+                <button class="confirm-btn" onclick="confirmChange('password')">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="section" id="forgot-password">
+            <h2 class="form-title">Reset Password</h2>
+            <input type="password" class="input-field" placeholder="New Password" id="forgotPassword">
+            <input type="password" class="input-field" placeholder="Confirm New Password" id="confirmForgotPassword">
+            <div class="profile-buttons">
+                <button class="back-btn" onclick="showSection('change-password')">Back</button>
+                <button class="confirm-btn" onclick="confirmChange('forgot-password')">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        const state = {
+            currentSection: 'profile-page',
+            userData: {
+                username: 'Username',
+                fullname: 'fullnameUser',
+                email: 'emailUser'
+            }
+        };
+
+        // Photo upload functionality
+        document.getElementById('photoInput').addEventListener('change', handlePhotoUpload);
+
+        function handlePhotoUpload(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('photoPreview');
+            const button = document.querySelector('.file-button');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
+                };
+                reader.readAsDataURL(file);
+                button.textContent = file.name;
+                button.classList.add('selected');
+            } else {
+                preview.innerHTML = '<span class="material-icons placeholder">person</span>';
+                button.textContent = 'Choose Photo';
+                button.classList.remove('selected');
+            }
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            state.currentSection = sectionId;
+            
+            // Update URL hash
+            window.location.hash = sectionId;
+        }
+
+        function goBack() {
+            if (document.referrer) {
+                window.history.back();
+            } else {
+                // Navigate to homepage or previous page
+                window.location.href = 'landing.html';
+            }
+        }
+
+        function confirmChange(type) {
+            const messages = {
+                'photo': 'Profile photo updated successfully!',
+                'username': 'Username updated successfully!',
+                'fullname': 'Full name updated successfully!',
+                'password': 'Password updated successfully!',
+                'email': 'Email updated successfully!',
+                'forgot-password': 'Password reset successfully!'
+            };
+
+            // Validation
+            if (type === 'photo') {
+                const fileInput = document.getElementById('photoInput');
+                if (!fileInput.files.length) {
+                    alert('Please select a photo to upload!');
+                    return;
+                }
+                
+                // Update main profile picture
+                const reader = new FileReader();
+                reader.onload = e => {
+                    document.getElementById('mainProfilePicture').innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+                
+            } else if (type === 'forgot-password') {
+                const newPassword = document.getElementById('forgotPassword').value;
+                const confirmPassword = document.getElementById('confirmForgotPassword').value;
+                
+                if (!newPassword || !confirmPassword) {
+                    alert('Please fill in all fields!');
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+            } else {
+                const activeSection = document.querySelector('.section.active');
+                const inputs = activeSection.querySelectorAll('.input-field:not([readonly])');
+                
+                for (let input of inputs) {
+                    if (!input.value.trim()) {
+                        alert('Please fill in all fields!');
+                        return;
+                    }
+                }
+
+                // Update display values
+                if (type === 'username') {
+                    const newUsername = document.getElementById('newUsername').value;
+                    document.querySelector('.info-row .info-value[onclick*="update-username"]').textContent = newUsername + ' >';
+                    state.userData.username = newUsername;
+                } else if (type === 'fullname') {
+                    const newFullname = document.getElementById('newFullname').value;
+                    document.querySelector('.info-row .info-value[onclick*="update-fullname"]').textContent = newFullname + ' >';
+                    state.userData.fullname = newFullname;
+                } else if (type === 'email') {
+                    const newEmail = document.getElementById('newEmail').value;
+                    document.querySelector('.info-row .info-value[onclick*="edit-email"]').textContent = newEmail + ' >';
+                    state.userData.email = newEmail;
+                }
+            }
+
+            alert(messages[type] || 'Changes saved successfully!');
+            showSection('profile-page');
+            clearInputs();
+        }
+
+        function confirmProfile() {
+            alert('Profile confirmed!');
+            goBack();
+        }
+
+        function clearInputs() {
+            // Clear text inputs
+            document.querySelectorAll('.input-field:not([readonly])').forEach(input => {
+                input.value = '';
+            });
+            
+            // Clear photo upload
+            const photoInput = document.getElementById('photoInput');
+            const photoPreview = document.getElementById('photoPreview');
+            const fileButton = document.querySelector('.file-button');
+            
+            if (photoInput) {
+                photoInput.value = '';
+                photoPreview.innerHTML = '<span class="material-icons placeholder">person</span>';
+                fileButton.textContent = 'Choose Photo';
+                fileButton.classList.remove('selected');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial data
+            document.getElementById('currentUsername').value = state.userData.username;
+
+            // Handle URL hash
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        });
+
+        // Handle browser navigation
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        });
+    </script>
+</body>
+</html>

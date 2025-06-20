@@ -1,0 +1,381 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    overflow-y: auto; /* Allow scrolling if content is long */
+}
+
+/* Pattern background */
+.background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23d6dbe1" fill-opacity="0.2"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); /* Subtle grey pattern */
+    z-index: -1;
+}
+
+.container {
+    padding: 20px;
+    width: 100%;
+    max-width: 900px; /* Adjust max-width as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* For positioning the "Kembali" button */
+}
+
+.btn-kembali {
+    position: absolute;
+    top: -60px; /* Adjust as needed to position above the card */
+    left: 0px; /* Adjust to align with the card's left edge */
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-kembali:hover {
+    background-color: #d0d0d0;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; /* For logo and title */
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+.logo p {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.form-section {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.form-section h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-section h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #eee;
+    position: absolute;
+    bottom: -8px; /* Adjust as needed */
+    left: 0;
+}
+
+/* Thumbnail Section */
+.thumbnail-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the thumbnail box */
+}
+
+.thumbnail-upload-box {
+    width: 200px;
+    height: 250px; /* Adjusted height for better aspect ratio */
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    margin-top: 15px; /* Space from the H2 */
+}
+
+.thumbnail-upload-box:hover {
+    border-color: #888;
+    background-color: #f0f0f0;
+}
+
+.thumbnail-upload-box svg {
+    width: 50px;
+    height: 50px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.thumbnail-upload-box p {
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* Text Input */
+.text-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Upload Buttons */
+.upload-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn-upload,
+.btn-delete {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-upload {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.btn-upload:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: #da190b;
+}
+
+.upload-hint {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.radio-group input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked {
+    border-color: #4CAF50;
+}
+
+.radio-group input[type="radio"]::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Schedule Inputs */
+.schedule-inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.schedule-inputs input[type="date"],
+.schedule-inputs input[type="time"],
+.schedule-inputs input[type="number"] {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow inputs to grow */
+    min-width: 100px; /* Minimum width for inputs */
+}
+
+.schedule-inputs .colon {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #555;
+}
+
+.schedule-inputs input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Main Publish Button */
+.btn-publish {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 40px;
+    width: auto; /* Adjust width based on content */
+    display: inline-block; /* To respect padding and margin */
+}
+
+.btn-publish:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+
+    .form-section h2 {
+        font-size: 1.1em;
+    }
+
+    .btn-kembali {
+        top: -45px;
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .upload-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-upload,
+    .btn-delete {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .schedule-inputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .schedule-inputs input {
+        width: 100%; /* Full width for inputs in column layout */
+    }
+    .schedule-inputs .colon {
+        display: none; /* Hide colon when stacked */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 15px;
+    }
+
+    .logo img {
+        max-width: 120px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+
+    .thumbnail-upload-box {
+        width: 150px;
+        height: 200px;
+    }
+}

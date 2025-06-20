@@ -1,0 +1,245 @@
+/* Aturan dasar yang selalu dipakai */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif; /* Pastikan font ini diimpor jika ingin digunakan */
+}
+
+/* Gaya untuk seluruh halaman otentikasi (login/signup) */
+body.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Gunakan min-height agar tidak terpotong jika kontennya panjang */
+    background-color: #f8f9fa;
+    padding: 20px; /* Tambahkan padding agar tidak terlalu mepet ke tepi layar di mobile */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar/tinggi */
+}
+
+/* Gaya untuk kontainer utama login */
+.login-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 56, 180, 0.5);
+    width: 100%; /* Gunakan 100% untuk responsif */
+    max-width: 350px; /* Batasi lebar maksimum */
+    padding: 30px;
+    text-align: center;
+    box-sizing: border-box; /* Penting untuk padding */
+}
+
+/* Gaya untuk kontainer logo di halaman otentikasi */
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.logo-tagline {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk judul di halaman login */
+.login-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Gaya umum untuk semua input field di halaman otentikasi */
+.input-field {
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+}
+
+.input-field:focus {
+    border-color: #4285f4;
+}
+
+/* Gaya untuk grup tombol di halaman login */
+.login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk tombol 'Kembali' */
+.kembali-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e0e0e0;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.kembali-btn:hover {
+    background-color: #d0d0d0;
+}
+
+/* Gaya untuk tombol 'Login' */
+.login-submit-btn {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4285f4;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-submit-btn:hover {
+    background-color: #3b78e7;
+}
+
+/* Gaya untuk teks 'Lupa kata sandi?' */
+.forgot-password {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Gaya untuk link 'Daftar' */
+.register-link {
+    font-size: 12px;
+    color: #666;
+}
+
+.register-link a {
+    color: #4285f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* Gaya untuk kontainer utama signup */
+.signup-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 56, 180, 0.3);
+    width: 100%; /* Gunakan 100% untuk responsif */
+    max-width: 350px; /* Batasi lebar maksimum */
+    padding: 30px;
+    text-align: center;
+    box-sizing: border-box; /* Penting untuk padding */
+}
+
+/* Gaya untuk judul di halaman signup */
+.signup-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Gaya khusus untuk select (Gender, Negara) di form signup */
+.signup-container select.input-field {
+    appearance: none; /* Menghilangkan panah default browser */
+    -webkit-appearance: none; /* Untuk kompatibilitas Safari */
+    -moz-appearance: none; /* Untuk kompatibilitas Firefox */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C114.7L159.2%2C242.5c-4.1%2C4.1-10.7%2C4.1-14.8%2C0L5.3%2C114.7c-4.1-4.1-4.1-10.7%2C0-14.8h0c4.1-4.1%2C10.7-4.1%2C14.8%2C0l132.8%2C132.8L272.2%2C99.9c4.1-4.1%2C10.7-4.1%2C14.8%2C0h0C291.1%2C104%2C291.1%2C110.6%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Memberi ruang untuk panah */
+    cursor: pointer;
+}
+
+/* Gaya untuk input type="number" (Usia) - menghilangkan spinner */
+.signup-container input[type="number"].input-field::-webkit-outer-spin-button,
+.signup-container input[type="number"].input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Opera */
+    margin: 0;
+}
+
+/* Gaya untuk container checkbox Syarat dan Ketentuan */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%; /* Pastikan lebarnya sama dengan input fields */
+    max-width: 280px; /* Sesuaikan jika Anda ingin input lebih lebar dari container */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    min-width: 16px; /* Memastikan checkbox punya ukuran minimum */
+    min-height: 16px;
+}
+
+.terms-text {
+    font-size: 12px;
+    color: #666;
+}
+
+.terms-text a {
+    color: #4285f4;
+    text-decoration: none;
+}
+
+/* Gaya untuk grup tombol di halaman signup */
+.signup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Gaya untuk tombol 'Signup' */
+.signup-submit-btn {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4285f4;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-submit-btn:hover {
+    background-color: #3b78e7;
+}
+
+/* Untuk memastikan input di dalam form memiliki lebar yang sama */
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memusatkan input */
+}
+/* Aturan ini memastikan input fields di signup form memiliki lebar yang konsisten */
+.signup-container .input-field,
+.signup-container .checkbox-container {
+    width: 100%; /* Agar semua item form memiliki lebar yang sama */
+    max-width: 280px; /* Sesuaikan jika Anda ingin input lebih lebar dari container */
+    margin-left: auto;
+    margin-right: auto;
+}

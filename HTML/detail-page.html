@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Komik - [Judul Komik]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="../css/landing.css">
+    <link rel="stylesheet" href="../css/detail-page.css">
+    <link rel="stylesheet" href="../css/milestone-popup.css">
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+            >&times;</a
+        >
+        <a href="#">View All Works</a>
+        <a href="#">Daily Login</a>
+        <a href="#" id="openMilestonePopupBtn">Daily Milestones</a>
+        <a href="#">This Week's Popular</a>
+        <a href="#">Premium</a>
+        <a href="#">Community</a>
+        <a href="#">My Account</a>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+
+    <main class="container">
+        <div class="content-wrapper">
+            <div class="main-content">
+                <section class="synopsis-box">
+                    <h2>Sinopsis</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </section>
+
+                <section class="chapter-list">
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter 5</span>
+                        <span class="chapter-date">31/02/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 45.6k</span>
+                            <i data-feather="award" class="icon-premium"></i>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter 4</span>
+                        <span class="chapter-date">24/02/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 123.4k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter 3</span>
+                        <span class="chapter-date">17/02/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 132.4k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter 2</span>
+                        <span class="chapter-date">10/02/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 234.5k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter 1</span>
+                        <span class="chapter-date">03/02/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 222.2k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter 0</span>
+                        <span class="chapter-date">28/01/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 198.7k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter -1</span>
+                        <span class="chapter-date">21/01/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 150.0k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter -2</span>
+                        <span class="chapter-date">14/01/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 110.2k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter -3</span>
+                        <span class="chapter-date">07/01/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 90.5k</span>
+                        </div>
+                    </div>
+                    <div class="chapter-item">
+                        <span class="chapter-title">Chapter -4</span>
+                        <span class="chapter-date">01/01/2025</span>
+                        <div class="chapter-info">
+                            <span class="views"><i data-feather="heart" class="icon-heart"></i> 70.3k</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="sidebar-info">
+                <div class="comic-cover-box">
+                    <img src="../IMG/cover.jpg" alt="Comic Cover" class="comic-cover-image">
+                </div>
+                <div class="info-box">
+                    <h2>Genre</h2>
+                    <p>Action, Fantasy, Adventure</p>
+                </div>
+                <div class="info-box">
+                    <h2>Author</h2>
+                    <p>Nama Author</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../JS/script.js"></script>
+    <script src="../JS/milestone-popup.js"></script>
+    <script>
+        // Function to check login status (example only)
+        function isUserLoggedIn() {
+            return localStorage.getItem('isLoggedIn') === 'true';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load navbar
+            let navbarFileName = '../components/navbar.html'; // Default for logged out
+            if (isUserLoggedIn()) {
+                navbarFileName = '../components/navbar-loggedin.html'; // For logged in users
+            }
+
+            fetch(navbarFileName)
+                .then(response => response.text())
+                .then(data => {
+                    const navbarPlaceholder = document.getElementById('navbar-placeholder');
+                    if (navbarPlaceholder) {
+                        navbarPlaceholder.innerHTML = data;
+                        // Ensure initializeNavbarFeatures() is defined in script.js and called after navbar loads
+                        if (typeof initializeNavbarFeatures === 'function') {
+                            initializeNavbarFeatures();
+                        }
+                        // Feather icons for navbar will be replaced here.
+                        // We will also replace them globally after all content loads.
+                    } else {
+                        console.error('Navbar placeholder not found!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading navbar:', error);
+                });
+
+            // Load footer
+            fetch('../components/footer.html') // Assuming footer.html is in the components folder
+                .then(response => response.text())
+                .then(data => {
+                    const footerPlaceholder = document.getElementById('footer-placeholder');
+                    if (footerPlaceholder) {
+                        footerPlaceholder.innerHTML = data;
+                        // Feather icons for footer will be replaced here.
+                        // We will also replace them globally after all content loads.
+                    } else {
+                        console.error('Footer placeholder not found!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading footer:', error);
+                });
+
+            // After all components are likely loaded, initialize any page-specific features
+            // and replace all Feather icons for the entire page.
+            // A slight delay or Promise.all can ensure components are rendered.
+            setTimeout(() => {
+                // If you have any specific JS for detail-page (like chapter interaction), put it here.
+                // For example: initializeDetailPageInteractions();
+                feather.replace(); // Replace all Feather icons on the page
+            }, 100); // Small delay to allow DOM updates
+        });
+
+        // Use pageshow for robustness, especially if navigating back from other pages
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                console.log("Page loaded from BFcache. Re-initializing features.");
+                // Re-fetch and re-initialize components if needed, or simply re-run initializers.
+                // For simplicity, we're relying on the initial fetch for components.
+                // Re-initialize navbar features if needed (since it affects sidebar/language menu)
+                if (typeof initializeNavbarFeatures === 'function') {
+                    initializeNavbarFeatures();
+                }
+                // Re-replace feather icons for all elements on the page, including dynamic ones.
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>
