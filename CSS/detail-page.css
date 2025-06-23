@@ -9,6 +9,10 @@
     --border-color: #e0e0e0;
 }
 
+*{
+    text-decoration: none;
+}
+
 /* Pastikan body margin dan padding 0 untuk layout full-width */
 body {
     font-family: 'Poppins', sans-serif;
@@ -20,6 +24,7 @@ body {
     background-repeat: repeat;
     color: var(--text-color);
     line-height: 1.6;
+    text-decoration: none;
 }
 
 .navbar{
@@ -224,6 +229,7 @@ body {
     height: 20px;
     color: gold; /* Warna ikon mahkota */
 }
+
 
 /* Sidebar Info (Genre & Author) */
 /* .sidebar-info { } */ /* Tidak perlu styling khusus jika hanya sebagai kontainer grid */

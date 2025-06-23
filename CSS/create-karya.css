@@ -1,381 +1,321 @@
+/* General Styling */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f0f2f5;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #333;
-    overflow-y: auto; /* Allow scrolling if content is long */
-}
-
-/* Pattern background */
-.background-pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23d6dbe1" fill-opacity="0.2"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); /* Subtle grey pattern */
-    z-index: -1;
+    box-sizing: border-box;
 }
 
 .container {
-    padding: 20px;
     width: 100%;
-    max-width: 900px; /* Adjust max-width as needed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative; /* For positioning the "Kembali" button */
-}
-
-.btn-kembali {
-    position: absolute;
-    top: -60px; /* Adjust as needed to position above the card */
-    left: 0px; /* Adjust to align with the card's left edge */
-    background-color: #e0e0e0;
-    color: #333;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.btn-kembali:hover {
-    background-color: #d0d0d0;
+    max-width: 950px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 25px 15px rgba(0, 56, 180, 0.25);
 }
 
 .card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px 50px;
     width: 100%;
     box-sizing: border-box;
-    text-align: center; /* For logo and title */
 }
 
+/* Header */
 .logo {
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .logo img {
-    max-width: 180px;
+    max-width: 200px;
     height: auto;
 }
 
-.logo p {
-    font-size: 0.8em;
-    color: #777;
-    margin-top: 5px;
-}
-
 h1 {
-    font-size: 1.8em;
-    font-weight: 700;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
     margin-top: 0;
     margin-bottom: 40px;
-    color: #222;
 }
 
-.form-section {
-    text-align: left;
-    margin-bottom: 30px;
+/* Form Layout */
+.form-main-layout {
+    display: flex;
+    gap: 60px;
 }
 
-.form-section h2 {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 15px;
-    position: relative;
+.form-left {
+    flex-basis: 200px;
+    flex-shrink: 0;
 }
 
-.form-section h2::after {
-    content: '';
+.form-left>label {
+    font-weight: 500;
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 10px;
     display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #eee;
-    position: absolute;
-    bottom: -8px; /* Adjust as needed */
-    left: 0;
 }
 
-/* Thumbnail Section */
-.thumbnail-section {
+.form-right {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the thumbnail box */
+    gap: 25px;
 }
 
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #000000;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Input, Textarea, & Select Styling (Underline Style) */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    border: none;
+    border-bottom: 1px solid #d0d0d0;
+    background-color: transparent;
+    padding: 8px 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-bottom: 2px solid #0d6efd;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Thumbnail Box */
 .thumbnail-upload-box {
     width: 200px;
-    height: 250px; /* Adjusted height for better aspect ratio */
-    border: 2px dashed #ccc;
-    border-radius: 8px;
+    height: 200px;
+    border: 1px dashed #e0e0e0;
+    background-color: #f7f7f7;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: #fafafa;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    margin-top: 15px; /* Space from the H2 */
+    text-align: center;
+    color: #888;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-bottom: 15px;
 }
 
 .thumbnail-upload-box:hover {
-    border-color: #888;
     background-color: #f0f0f0;
+    border-color: #ccc;
 }
 
 .thumbnail-upload-box svg {
-    width: 50px;
-    height: 50px;
-    color: #999;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    color: #aaa;
 }
 
 .thumbnail-upload-box p {
-    font-size: 0.9em;
-    color: #777;
-    text-align: center;
+    margin: 0;
+    font-size: 0.9rem;
     padding: 0 10px;
 }
 
-/* Text Input */
-.text-input {
+#thumbnailPreview {
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#thumbnailPreview img {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.text-input:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-}
-
-/* Upload Buttons */
-.upload-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.btn-upload,
-.btn-delete {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-upload {
-    background-color: #4CAF50;
-    color: #fff;
-}
-
-.btn-upload:hover {
-    background-color: #45a049;
-}
-
-.btn-delete {
-    background-color: #f44336;
-    color: #fff;
-}
-
-.btn-delete:hover {
-    background-color: #da190b;
-}
-
-.upload-hint {
-    font-size: 0.85em;
-    color: #777;
-    margin-top: 10px;
-}
-
-/* Radio Group */
-.radio-group {
-    display: flex;
-    gap: 30px;
-    margin-top: 15px;
-}
-
-.radio-group label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 400;
-}
-
-.radio-group input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    margin-right: 8px;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    transition: border-color 0.2s ease;
-}
-
-.radio-group input[type="radio"]:checked {
-    border-color: #4CAF50;
-}
-
-.radio-group input[type="radio"]::before {
-    content: '';
+    height: auto;
     display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.2s ease;
 }
 
-.radio-group input[type="radio"]:checked::before {
-    transform: translate(-50%, -50%) scale(1);
+/* Message Box */
+.message-box {
+    display: none;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
 }
 
-/* Schedule Inputs */
-.schedule-inputs {
+.message-box.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Terms and Conditions */
+.form-terms {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
     align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 
-.schedule-inputs input[type="date"],
-.schedule-inputs input[type="time"],
-.schedule-inputs input[type="number"] {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-    box-sizing: border-box;
-    flex-grow: 1; /* Allow inputs to grow */
-    min-width: 100px; /* Minimum width for inputs */
+.form-terms input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    accent-color: #0d6efd;
+    cursor: pointer;
 }
 
-.schedule-inputs .colon {
-    font-size: 1.2em;
-    font-weight: 600;
+.form-terms label {
+    font-size: 0.95rem;
     color: #555;
+    cursor: pointer;
 }
 
-.schedule-inputs input:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+/* Buttons */
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-/* Main Publish Button */
-.btn-publish {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 15px 40px;
+.onverse {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.btn-kembali,
+.btn-daftar {
+    padding: 12px 35px;
     border: none;
     border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 40px;
-    width: auto; /* Adjust width based on content */
-    display: inline-block; /* To respect padding and margin */
+    transition: all 0.3s ease;
 }
 
-.btn-publish:hover {
-    background-color: #45a049;
+.btn-kembali {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.btn-kembali:hover {
+    background-color: #d8dde2;
+}
+
+.btn-daftar {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+.btn-daftar:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Styling untuk Dropdown/Select */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23888888%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-13.z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 5px top 50%;
+    background-size: 0.65em auto;
+    cursor: pointer;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .card {
-        padding: 25px;
+        padding: 30px;
     }
 
-    h1 {
-        font-size: 1.5em;
-        margin-bottom: 30px;
-    }
-
-    .form-section h2 {
-        font-size: 1.1em;
-    }
-
-    .btn-kembali {
-        top: -45px;
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
-
-    .upload-buttons {
+    .form-main-layout {
         flex-direction: column;
-        gap: 10px;
+        gap: 30px;
     }
 
-    .btn-upload,
-    .btn-delete {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .radio-group {
+    .form-left {
+        flex-basis: auto;
+        display: flex;
         flex-direction: column;
-        gap: 15px;
-    }
-
-    .schedule-inputs {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .schedule-inputs input {
-        width: 100%; /* Full width for inputs in column layout */
-    }
-    .schedule-inputs .colon {
-        display: none; /* Hide colon when stacked */
+        align-items: center;
     }
 }
 
 @media (max-width: 480px) {
-    .card {
-        padding: 15px;
+    body {
+        padding: 20px 10px;
     }
 
-    .logo img {
-        max-width: 120px;
+    .card {
+        padding: 20px;
     }
 
     h1 {
-        font-size: 1.3em;
-        margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 30px;
     }
 
-    .thumbnail-upload-box {
-        width: 150px;
-        height: 200px;
+    .form-row {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-kembali,
+    .btn-daftar {
+        width: 100%;
     }
 }

@@ -1,108 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Karya Baru</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/create-karya.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buat Karya - Anverse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/create-karya.css" />
     <script src="https://unpkg.com/feather-icons"></script>
-</head>
-<body>
-    <div class="background-pattern"></div>
+  </head>
+  <body>
     <div class="container">
-        <button class="btn-kembali" onclick="history.back()">Kembali</button>
-        <div class="card">
-            <div class="logo">
-                <img src="https://via.placeholder.com/150x50?text=INVERSE" alt="Inverse Logo">
-                <p>EXPLORE, READ, AND CREATE!</p>
-            </div>
-            <h1>Judul: Judul Karya</h1>
-
-            <div class="form-section thumbnail-section">
-                <h2>Thumbnail</h2>
-                <div class="thumbnail-upload-box">
-                    <i data-feather="upload-cloud"></i>
-                    <p>Pilih gambar untuk diunggah</p>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <h2>Judul Chapter</h2>
-                <input type="text" class="text-input" placeholder="Masukkan judul chapter...">
-            </div>
-
-            <div class="form-section upload-section">
-                <h2>Unggah Gambar</h2>
-                <div class="upload-buttons">
-                    <button class="btn-upload">Pilih file untuk diunggah</button>
-                    <button class="btn-delete">Hapus</button>
-                </div>
-                <p class="upload-hint">*File yang diterima berupa PDF</p>
-            </div>
-
-            <div class="form-section comment-section">
-                <h2>Kolom Komentar</h2>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="comment_status" value="on" checked> Nyala
-                    </label>
-                    <label>
-                        <input type="radio" name="comment_status" value="off"> Mati
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-section publish-section">
-                <h2>Terbitkan</h2>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="publish_type" value="now" checked> Sekarang
-                    </label>
-                    <label>
-                        <input type="radio" name="publish_type" value="schedule"> Jadwalkan
-                    </label>
-                </div>
-                <div class="schedule-inputs">
-                    <input type="date" class="date-input">
-                    <input type="time" class="time-input">
-                    <span class="colon">:</span>
-                    <input type="number" class="minute-input" min="0" max="59" value="00" placeholder="Menit">
-                </div>
-            </div>
-
-            <button class="btn-publish">Terbitkan</button>
+      <div class="card">
+        <div class="logo">
+          <img src="../IMG/judul.png" />
         </div>
+        <h1>Publish Work</h1>
+
+        <form id="publish-work-form" enctype="multipart/form-data">
+          <div class="form-main-layout">
+            <div class="form-left">
+              <label>Thumbnail</label>
+              <div class="thumbnail-upload-box">
+                <i data-feather="upload"></i>
+                <p>Select image to upload</p>
+                <input
+                  type="file"
+                  id="thumbnailInput"
+                  name="thumbnail"
+                  class="file-input"
+                  hidden
+                  accept="image/*"
+                />
+              </div>
+              <div id="thumbnailPreview"></div>
+            </div>
+
+            <div class="form-right">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="kategori1">Category 1</label>
+                  <select id="kategori1" name="kategori1" required>
+                    <option value="" disabled selected>
+                      Select category...
+                    </option>
+                    <option value="Action">Action</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Slice of Life">Slice of Life</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Supernatural">Supernatural</option>
+                    <option value="Historical">Historical</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Music">Music</option>
+                    <option value="Mecha">Mecha</option>
+                    <option value="Isekai">Isekai</option>
+                    <option value="Psychological">Psychological</option>
+                    <option value="School Life">School Life</option>
+                    <option value="Superhero">Superhero</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="kategori2">Category 2</label>
+                  <select id="kategori2" name="kategori2">
+                    <option value="" disabled selected>
+                      Select category...
+                    </option>
+                    <option value="Action">Action</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Slice of Life">Slice of Life</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Supernatural">Supernatural</option>
+                    <option value="Historical">Historical</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Music">Music</option>
+                    <option value="Mecha">Mecha</option>
+                    <option value="Isekai">Isekai</option>
+                    <option value="Psychological">Psychological</option>
+                    <option value="School Life">School Life</option>
+                    <option value="Superhero">Superhero</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="title">Work Title</label>
+                <input type="text" id="title" name="title" required />
+              </div>
+
+              <div class="form-group">
+                <label for="synopsis">Synopsis</label>
+                <textarea
+                  id="synopsis"
+                  name="synopsis"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-terms">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms"
+              ><span>
+                <a class="onverse" href="privacypolicy.html">OnVerse</a>
+              </span>
+              Terms and Conditions</label
+            >
+          </div>
+
+          <div class="form-buttons">
+            <button
+              type="button"
+              class="btn-kembali"
+              onclick="window.history.back()"
+            >
+              Return
+            </button>
+            <button type="submit" class="btn-daftar">Register</button>
+          </div>
+        </form>
+        <div id="responseMessage" class="message-box"></div>
+      </div>
     </div>
 
     <script>
-        feather.replace(); // Initialize feather icons
+      feather.replace();
 
-        // Optional: Hide/show schedule inputs based on radio button selection
-        const publishTypeRadios = document.querySelectorAll('input[name="publish_type"]');
-        const scheduleInputs = document.querySelector('.schedule-inputs');
+      const thumbnailBox = document.querySelector(".thumbnail-upload-box");
+      const fileInput = document.getElementById("thumbnailInput");
+      const thumbnailPreview = document.getElementById("thumbnailPreview");
+      const publishForm = document.getElementById("publish-work-form");
+      const responseMessageDiv = document.getElementById("responseMessage");
+      const creatorEmailInput = document.getElementById("email");
 
-        function toggleScheduleInputs() {
-            if (document.querySelector('input[name="publish_type"]:checked').value === 'schedule') {
-                scheduleInputs.style.display = 'flex';
-            } else {
-                scheduleInputs.style.display = 'none';
-            }
+      // Set user email if available in session
+      document.addEventListener("DOMContentLoaded", () => {
+        const userEmail = sessionStorage.getItem("user_email");
+        if (userEmail) {
+          creatorEmailInput.value = userEmail;
+        }
+      });
+
+      // Thumbnail preview functionality
+      thumbnailBox.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          // Check if file is an image
+          if (!file.type.match("image.*")) {
+            showMessage(
+              "Please select an image file (JPEG, PNG, GIF)",
+              "error"
+            );
+            return;
+          }
+
+          // Check file size (max 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            showMessage("Image size should be less than 5MB", "error");
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            thumbnailPreview.innerHTML = `<img src="${e.target.result}" alt="Thumbnail Preview" style="max-width:100%; max-height:200px;">`;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Form submission handler
+      publishForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        responseMessageDiv.textContent = "";
+        responseMessageDiv.style.display = "none";
+        responseMessageDiv.classList.remove("success", "error");
+
+        // Validate required fields
+        if (!document.getElementById("terms").checked) {
+          showMessage("You must accept the Terms and Conditions!", "error");
+          return;
         }
 
-        publishTypeRadios.forEach(radio => {
-            radio.addEventListener('change', toggleScheduleInputs);
-        });
+        // Validate thumbnail
+        if (!fileInput.files || fileInput.files.length === 0) {
+          showMessage("Please upload a thumbnail image", "error");
+          return;
+        }
 
-        // Initial call to set correct visibility on page load
-        toggleScheduleInputs();
+        // Prepare form data
+        const formData = new FormData(publishForm);
 
-        // Optional: Handle file upload button click for demonstration
-        document.querySelector('.btn-upload').addEventListener('click', () => {
-            alert('File upload functionality would be implemented here!');
-        });
+        try {
+          const response = await fetch("../php/upload_work.php", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            showMessage(data.message, "success");
+            // Reset form after successful submission
+            publishForm.reset();
+            thumbnailPreview.innerHTML = "";
+            // Redirect after 2 seconds
+            setTimeout(() => {
+              window.location.href = "../Creator's/creator-dashboard.php"; // Change to your desired redirect page
+            }, 2000);
+          } else {
+            showMessage(data.message, "error");
+            if (data.status_code === "pending_verification") {
+              alert(
+                "Your creator account is pending verification. Please wait for admin approval."
+              );
+            }
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          showMessage("An error occurred. Please try again.", "error");
+        }
+      });
+
+      function showMessage(message, type) {
+        responseMessageDiv.textContent = message;
+        responseMessageDiv.className = "message-box " + type;
+        responseMessageDiv.style.display = "block";
+      }
     </script>
-</body>
+  </body>
 </html>

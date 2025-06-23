@@ -1,865 +1,920 @@
-  :root {
-    --primary: D9D9D9;
-    --bg: white;
-  }
-
-  @font-face {
-    font-family: "AkiraExpanded";
-    src: url("fonts/AkiraExpanded.ttf") format("truetype");
-    font-style: normal;
-  }
-
-  /* General Styles */
-  /* Ketika Mode Terang */
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    /* background-color: var(--primary); */
-    color: var(--primary);
-    background-color: white;
-    background-image: url("../IMG/background.png");
-    /* mix-blend-mode: exclusion; */
-  }
-  /* Mode Gelap */
-
-  /* ====================== BUAT POP UP HARIAN ==================== */
-
-
-
-
-  /* Navbar */
-
-  .navbar {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.8);
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999999;
-  }
-
-  .navbar .navbar-logo {
-    display: flex;
-    align-items: center;
-    height: 40px;
-  }
-  .navbar .navbar-logo img {
-    height: 100%;
-    width: auto;
-    margin-right: 10px;
-  }
-
-  .navbar .navbar-nav a {
-    font-family: "akiraExpanded", sans-serif;
-    color: black;
-    display: inline-block;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-left: 45px;
-    text-align: left;
-    text-decoration: none;
-  }
-
-  .navbar .navbar-nav a:hover {
-    color: #2563eb;
-    transition: color 0.3s ease;
-  }
-
-  .navbar .navbar-logo:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-  }
-
-  .navbar .navbar-extra {
-    /* font-family: "akiraExpanded", sans-serif; */
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Untuk tombol toggle */
-
-  .navbar .navbar-extra a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 14px;
-    text-decoration: none;
-    color: black;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-left: 10px;
-    border-radius: 10px;
-  }
-
-  .navbar .navbar-extra .button {
-    color: white;
-    background-color: #2563eb;
-  }
-
-  .navbar .navbar-extra .button:hover {
-    background-color: #0e3894;
-    transition: background-color 0.3s ease;
-  }
-
-  .humbuger {
-    width: 32px; /* Lebar ikon */
-    height: 32px; /* Tinggi ikon */
-    stroke-width: 2.5; /* Ketebalan garis ikon */
-  }
-
-  /* Sidebar Humbuger */
-
-  /* Basic Sidebar Styles - You should move these to landing.css */
-  /* Sidebar Humbuger */
-  .sidebar {
-    height: 100%;
-    width: 0; /* Hidden by default */
-    position: fixed;
-    z-index: 999998;
-    top: 80px; /* <--- UBAH INI: Sesuaikan dengan tinggi navbar Anda */
-    right: 0; /* Positioned to the right */
-    background-color: #2563eb; /* Dark background */
-    overflow-x: hidden;
-    transition: 0.5s; /* Smooth transition */
-    padding-top: 20px; /* <--- SESUAIKAN INI: Beri sedikit padding di dalam sidebar itu sendiri */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-  }
-
-  .sidebar a {
-    padding: 15px 25px;
-    text-decoration: none;
-    font-size: 22px;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.3s;
-  }
-
-  .sidebar a:hover {
-    color: #818181; /* Anda mungkin ingin warna yang lebih kontras, seperti white atau lighter blue */
-    background-color: #575757; /* Anda mungkin ingin warna yang lebih kontras */
-  }
-
-  .sidebar .closebtn {
-    position: absolute;
-    top: 0; /* Close button tetap di paling atas sidebar */
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    color: #f1f1f1;
-  }
-
-  /* When the sidebar is open, push the main content to the left */
-  .sidebar.active {
-    width: 250px; /* Adjust as needed */
-  }
-
-  /* Sidebar Overlay */
-  .sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 999997; /* Below sidebar, above content */
-    display: none; /* Hidden by default */
-  }
-
-  /* When sidebar is active, show the overlay */
-  .sidebar.active + .sidebar-overlay {
-    display: block;
-  }
-
-  /* BANNER SECTION */
-
-  .banner {
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 55vh;
-    /* background-color: var(--bg); */
-    /* background-color: brown; */
-    text-align: center;
-    background-image: url("../IMG/backgroundbanner.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .banner .banner-image {
-    width: 100%;
-    max-width: 750px;
-    height: auto;
-    padding: 10px;
-  }
-
-  .content {
-    display: flex;
-    /* flex-direction: column; */
-    /* align-items: top; */
-    justify-content: center;
-    /* padding: 20px; */
-    /* background-color: var(--bg); */
-  }
-
-  .content .days {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: top;
-    padding: 1px;
-    position: top;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-
-  .content .days .day {
-    position: relative;
-    color: black;
-    background-color: #d9d9d9;
-    border-radius: 8px;
-    padding: 12px 35px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  .content .days .day:hover {
-    color: #2563eb;
-  }
-
-  .content .days .day.active {
-    background-color: #2563eb;
-    color: white;
-  }
-
-  /* Content sesuai Hari */
-
-  .daily {
-    padding: 2rem;
-  }
-
-  .comic-list {
-    display: grid;
-    grid-template-columns: repeat(4, 0fr);
-    gap: 3rem;
-    justify-content: center;
-  }
-
-  .comic-cover {
-    width: 100%;
-    height: 100%; /* atur tinggi sesuai keinginan */
-    object-fit: contain; /* supaya gambar nggak gepeng dan tetap penuh */
-    border-radius: 0;
-    background-color: none;
-  }
-
-  .comic-title,
-  .comic-author {
-    font-size: 0.75rem;
-    color: white;
-    margin: 0.3rem 0;
-  }
-
-  .comic-card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 180px; /* ukuran lebih kecil */
-    height: 100%;
-    margin: auto; /* agar center dalam grid */
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    overflow: hidden;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    text-align: center;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .comic-title,
-  .comic-author {
-    font-size: 0.75rem;
-    color: rgb(160, 29, 29);
-    margin: 0.3rem 0;
-  }
-
-  .comic-author {
-    font-size: 0.85rem;
-    color: #666;
-  }
-
-  /* Bagian deskripsi komik */
-
-  .comic-desc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 10px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 10px;
-    z-index: 2;
-  }
-
-  .comic-card:hover .comic-desc {
-    opacity: 1;
-    background-color: #2564ebe1;
-    cursor: pointer;
-  }
-
-  /* Karya Baru */
-  .karya-baru {
-    text-align: center;
-  }
-
-  .karya-baru h1 {
-    background-color: #d9d9d9;
-    color: black;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    margin: 20px auto;
-    display: inline-block;
-    font-size: 2rem;
-    width: 836px;
-  }
-
-  .karya-baru h1:hover {
-    color: #2563eb;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
-
-  /* Genre Section */
-  .genre {
-    text-align: center;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 868px;
-  }
-
-  .genre h1 {
-    color: black;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    background-color: #d9d9d9;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-  }
-
-  .genre-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    justify-content: center;
-  }
-
-  .genre-btn {
-    background-color: #d9d9d9;
-    color: #2563eb;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
-  }
-
-  .genre-btn:hover,
-  .genre-btn.active {
-    background-color: #2563eb;
-    color: #fff;
-  }
-
-  /* Navbar Region */
-  :root {
-    --primary: D9D9D9;
-    --bg: white;
-  }
-
-  @font-face {
-    font-family: "AkiraExpanded";
-    src: url("fonts/AkiraExpanded.ttf") format("truetype");
-    font-style: normal;
-  }
-
-  /* General Styles */
-  /* Ketika Mode Terang */
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    /* background-color: var(--primary); */
-    color: var(--primary);
-    background-color: white;
-    background-image: url("../IMG/background.png");
-    /* mix-blend-mode: exclusion; */
-  }
-
-  /* Mode Gelap */
-
-  /* Navbar */
-
-  .navbar {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.8);
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999999;
-  }
-
-  .navbar .navbar-logo {
-    display: flex;
-    align-items: center;
-    height: 40px;
-  }
-  .navbar .navbar-logo img {
-    height: 100%;
-    width: auto;
-    margin-right: 10px;
-  }
-
-  .navbar .navbar-nav a {
-    font-family: "akiraExpanded", sans-serif;
-    color: black;
-    display: inline-block;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-left: 45px;
-    text-align: left;
-    text-decoration: none;
-  }
-
-  .navbar .navbar-nav a:hover {
-    color: #2563eb;
-    transition: color 0.3s ease;
-  }
-
-  .navbar .navbar-logo:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-  }
-
-  .navbar .navbar-extra {
-    /* font-family: "akiraExpanded", sans-serif; */
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Untuk tombol toggle */
-
-  .navbar .navbar-extra a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 14px;
-    text-decoration: none;
-    color: black;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-left: 10px;
-    border-radius: 10px;
-  }
-
-  .navbar .navbar-extra .button {
-    color: white;
-    background-color: #2563eb;
-  }
-
-  .navbar .navbar-extra .button:hover {
-    background-color: #0e3894;
-    transition: background-color 0.3s ease;
-  }
-
-  .humbuger {
-    width: 32px; /* Lebar ikon */
-    height: 32px; /* Tinggi ikon */
-    stroke-width: 2.5; /* Ketebalan garis ikon */
-  }
-
-  /* BANNER SECTION */
-
-  .banner {
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 55vh;
-    /* background-color: var(--bg); */
-    /* background-color: brown; */
-    text-align: center;
-    background-image: url("../IMG/backgroundbanner.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .banner .banner-image {
-    width: 100%;
-    max-width: 750px;
-    height: auto;
-    padding: 10px;
-  }
-
-  .content {
-    display: flex;
-    /* flex-direction: column; */
-    /* align-items: top; */
-    justify-content: center;
-    /* padding: 20px; */
-    /* background-color: var(--bg); */
-  }
-
-  .content .days {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: top;
-    padding: 1px;
-    position: top;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-
-  .content .days .day {
-    position: relative;
-    color: black;
-    background-color: #d9d9d9;
-    border-radius: 8px;
-    padding: 12px 35px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  .content .days .day:hover {
-    color: #2563eb;
-  }
-
-  .content .days .day.active {
-    background-color: #2563eb;
-    color: white;
-  }
-
-  /* Content sesuai Hari */
-
-  .daily {
-    padding: 2rem;
-  }
-
-  .comic-list {
-      display: grid;
-      grid-template-columns: repeat(4, 0fr); /* This might need adjustment based on desired width per card */
-      gap: 3rem;
-      justify-content: center;
-  }
-
-  .comic-card-link {
-      text-decoration: none; /* Removes the default underline from the link */
-      color: inherit; /* Inherits the text color from its children, so text colors you defined earlier remain */
-      display: block; /* Makes the anchor tag take up the full space of the card, making the entire area clickable */
-  }
-
-  .comic-cover {
-    width: 100%;
-    height: 100%; /* atur tinggi sesuai keinginan */
-    object-fit: contain; /* supaya gambar nggak gepeng dan tetap penuh */
-    border-radius: 0;
-    background-color: none;
-  }
-
-  .comic-title,
-  .comic-author {
-    font-size: 0.75rem;
-    color: white;
-    margin: 0.3rem 0;
-  }
-
-  .comic-card-link:hover .comic-desc {
-      opacity: 1;
-      background-color: #2564ebe1;
-      cursor: pointer; /* Explicitly set cursor to pointer when hovering over the clickable area */
-  }
-
-  .comic-card-link:hover .comic-desc {
-      opacity: 1;
-      background-color: #2564ebe1;
-      cursor: pointer;
-      /* --- ADD THIS --- */
-      pointer-events: auto; /* Re-enable pointer events when hovered */
-  }
-
-  .comic-card {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      width: 180px; /* smaller size */
-      height: 100%;
-      margin: auto; /* for centering within grid */
-      background-color: rgb(255, 255, 255);
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      padding: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-sizing: border-box;
-      position: relative;
-      /* Ensure the comic-card itself doesn't have a cursor: pointer; if it's already set on comic-card-link */
-      /* Remove if present: cursor: pointer; */
-  }
-
-  .comic-title,
-  .comic-author {
-    font-size: 0.75rem;
-    color: rgb(160, 29, 29);
-    margin: 0.3rem 0;
-  }
-
-  .comic-author {
-    font-size: 0.85rem;
-    color: #666;
-  }
-
-  /* Bagian deskripsi komik */
-
-  .comic-desc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 10px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 10px;
-    z-index: 1;
-  }
-
-  .comic-card:hover .comic-desc {
-    opacity: 1;
-    background-color: #2564ebe1;
-  }
-
-  /* Karya Baru */
-  .karya-baru {
-    text-align: center;
-  }
-
-  .karya-baru h1 {
-    background-color: #d9d9d9;
-    color: black;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    margin: 20px auto;
-    display: inline-block;
-    font-size: 2rem;
-    width: 836px;
-  }
-
-  .karya-baru h1:hover {
-    color: #2563eb;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
-
-  /* Genre Section */
-  .genre {
-    text-align: center;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 868px;
-  }
-
-  .genre h1 {
-    color: black;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    background-color: #d9d9d9;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-  }
-
-  .genre-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    justify-content: center;
-  }
-
-  .genre-btn {
-    background-color: #d9d9d9;
-    color: #2563eb;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
-  }
-
-  .genre-btn:hover,
-  .genre-btn.active {
-    background-color: #2563eb;
-    color: #fff;
-  }
-
-  /* Navbar Region */
-  .language-menu {
-    position: fixed;
-    left: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #d9d9d9;
-    border-radius: 100px;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-
-  .language-item {
-    width: 40px;
-    height: 40px;
-    margin: 20px 0;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-  }
-
-  .language-item:hover {
-    transform: scale(1.1);
-    background-color: #2563eb;
-    cursor: pointer;
-  }
-
-  .language-item img {
-    border-radius: 500px;
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-    transition: filter 0.3s ease;
-  }
-
-  /* Tombol panah untuk menampilkan kembali language menu */
-  .show-button {
-    position: fixed;
-    left: 3px; /* awal di luar layar */
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 12px 7px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1001;
-    transition: left 0.5s ease;
-    opacity: 0.5;
-  }
-
-  .show-button a {
-    color: black;
-    background-color: black;
-    width: 36px;
-    height: 36px;
-    stroke-width: 3; /* Ketebalan garis icon */
-  }
-
-  /* Ketika tombol panah muncul */
-  .show-button.show {
-    left: 10px;
-  }
-
-  /* Optional: hover effect */
-  .show-button:hover {
-    color: #2563eb;
-    opacity: 1;
-  }
-
-  /* Footer */
-  /* Footer*/
-
-  footer {
-    background-color: #2563eb;
-    text-align: center;
-    padding: 1rem 0 3rem;
-    margin-top: 3rem;
-  }
-
-  footer .social {
-    padding: 1rem 0;
-  }
-
-  footer .social a {
-    color: #fff;
-    margin: 1rem;
-  }
-
-  footer .social a:hover,
-  footer .links a:hover {
-    color: var(--bg);
-  }
-
-  footer .links {
-    margin-bottom: 1.4rem;
-  }
-
-  footer .links a {
-    color: #fff;
-    padding: 0.7rem 1rem;
-  }
-
-  footer .credit {
-    font-size: 0.8rem;
-  }
-
-  footer .credit a {
-    color: var(--bg);
-    font-weight: 700;
-  }
+:root {
+  --primary: D9D9D9;
+  --bg: white;
+}
+
+@font-face {
+  font-family: "AkiraExpanded";
+  src: url("fonts/AkiraExpanded.ttf") format("truetype");
+  font-style: normal;
+}
+
+/* General Styles */
+/* Ketika Mode Terang */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  /* background-color: var(--primary); */
+  color: var(--primary);
+  background-color: white;
+  background-image: url("../IMG/background.png");
+  /* mix-blend-mode: exclusion; */
+}
+/* Mode Gelap */
+
+/* ====================== BUAT POP UP HARIAN ==================== */
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+}
+
+.navbar .navbar-logo {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.navbar .navbar-logo img {
+  height: 100%;
+  width: auto;
+  margin-right: 10px;
+}
+
+.navbar .navbar-nav a {
+  font-family: "akiraExpanded", sans-serif;
+  color: black;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-left: 45px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav a:hover {
+  color: #2563eb;
+  transition: color 0.3s ease;
+}
+
+.navbar .navbar-logo:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.navbar .navbar-extra {
+  /* font-family: "akiraExpanded", sans-serif; */
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* ================== Search Bar Styles ================== */
+
+.navbar .navbar-search {
+  flex-grow: 1; /* Membuat search bar mengisi ruang yang tersedia */
+  margin-left: 45px; /* Memberi jarak dari logo, mirip seperti nav-link sebelumnya */
+  margin-right: 20px; /* Memberi sedikit jarak dari tombol di sebelah kanan */
+  max-width: 400px; /* Batasi lebar maksimum agar tidak terlalu panjang di layar besar */
+}
+
+.navbar .navbar-search form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #fff; /* Latar belakang putih */
+  border: 1px solid #c5c5c5; /* Border abu-abu tipis seperti di gambar */
+  border-radius: 50px; /* Membuat sudut sangat bulat (bentuk pil) */
+  padding: 6px 15px; /* Padding di dalam form */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sedikit bayangan halus */
+}
+
+.navbar .navbar-search input {
+  flex-grow: 1; /* Input field mengisi sisa ruang */
+  border: none; /* Menghapus border bawaan */
+  outline: none; /* Menghapus outline saat di-klik */
+  background: transparent; /* Latar belakang transparan */
+  font-size: 0.95rem; /* Ukuran font */
+  color: #333; /* Warna teks saat mengetik */
+  padding-left: 10px; /* Jarak antara teks dan ikon */
+  order: 2; /* Menempatkan input setelah tombol (ikon) */
+}
+
+.navbar .navbar-search input::placeholder {
+  color: #888; /* Warna untuk teks placeholder "Cari..." */
+}
+
+.navbar .navbar-search button {
+  border: none; /* Menghapus border bawaan */
+  background: transparent; /* Latar belakang transparan */
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #555; /* Warna ikon */
+  display: flex;
+  align-items: center;
+  order: 1; /* Menempatkan tombol (ikon) sebelum input field */
+}
+
+/* Mengatur ukuran ikon search dari Feather Icons */
+.navbar .navbar-search button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Untuk tombol toggle */
+
+.navbar .navbar-extra a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.navbar .navbar-extra .button {
+  color: white;
+  background-color: #2563eb;
+}
+
+.navbar .navbar-extra .button:hover {
+  background-color: #0e3894;
+  transition: background-color 0.3s ease;
+}
+
+.humbuger {
+  width: 32px; /* Lebar ikon */
+  height: 32px; /* Tinggi ikon */
+  stroke-width: 2.5; /* Ketebalan garis ikon */
+}
+
+/* Sidebar Humbuger */
+
+/* Basic Sidebar Styles - You should move these to landing.css */
+/* Sidebar Humbuger */
+.sidebar {
+  height: 100%;
+  width: 0; /* Hidden by default */
+  position: fixed;
+  z-index: 999998;
+  top: 80px; /* <--- UBAH INI: Sesuaikan dengan tinggi navbar Anda */
+  right: 0; /* Positioned to the right */
+  background-color: #2563eb; /* Dark background */
+  overflow-x: hidden;
+  transition: 0.5s; /* Smooth transition */
+  padding-top: 20px; /* <--- SESUAIKAN INI: Beri sedikit padding di dalam sidebar itu sendiri */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar a {
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #818181; /* Anda mungkin ingin warna yang lebih kontras, seperti white atau lighter blue */
+  background-color: #575757; /* Anda mungkin ingin warna yang lebih kontras */
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0; /* Close button tetap di paling atas sidebar */
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #f1f1f1;
+}
+
+/* When the sidebar is open, push the main content to the left */
+.sidebar.active {
+  width: 250px; /* Adjust as needed */
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999997; /* Below sidebar, above content */
+  display: none; /* Hidden by default */
+}
+
+/* When sidebar is active, show the overlay */
+.sidebar.active + .sidebar-overlay {
+  display: block;
+}
+
+/* BANNER SECTION */
+
+.banner {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
+  /* background-color: var(--bg); */
+  /* background-color: brown; */
+  text-align: center;
+  background-image: url("../IMG/backgroundbanner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner .banner-image {
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  padding: 10px;
+}
+
+.content {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: top; */
+  justify-content: center;
+  /* padding: 20px; */
+  /* background-color: var(--bg); */
+}
+
+.content .days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: top;
+  padding: 1px;
+  position: top;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.content .days .day {
+  position: relative;
+  color: black;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.content .days .day:hover {
+  color: #2563eb;
+}
+
+.content .days .day.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Content sesuai Hari */
+
+.daily {
+  padding: 2rem;
+}
+
+.comic-list {
+  display: grid;
+  grid-template-columns: repeat(4, 0fr);
+  gap: 3rem;
+  justify-content: center;
+}
+
+.comic-cover {
+  width: 100%;
+  height: 100%; /* atur tinggi sesuai keinginan */
+  object-fit: contain; /* supaya gambar nggak gepeng dan tetap penuh */
+  border-radius: 0;
+  background-color: none;
+}
+
+.comic-title,
+.comic-author {
+  font-size: 0.75rem;
+  color: white;
+  margin: 0.3rem 0;
+}
+
+.comic-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 180px; /* ukuran lebih kecil */
+  height: 100%;
+  margin: auto; /* agar center dalam grid */
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  text-align: center;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.comic-title,
+.comic-author {
+  font-size: 0.75rem;
+  color: rgb(160, 29, 29);
+  margin: 0.3rem 0;
+}
+
+.comic-author {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Bagian deskripsi komik */
+
+.comic-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.comic-card:hover .comic-desc {
+  opacity: 1;
+  background-color: #2564ebe1;
+  cursor: pointer;
+}
+
+/* Karya Baru */
+.karya-baru {
+  text-align: center;
+}
+
+.karya-baru h1 {
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  margin: 20px auto;
+  display: inline-block;
+  font-size: 2rem;
+  width: 836px;
+}
+
+.karya-baru h1:hover {
+  color: #2563eb;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Genre Section */
+.genre {
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 868px;
+}
+
+.genre h1 {
+  color: black;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.genre-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  justify-content: center;
+}
+
+.genre-buttons a{
+  text-decoration: none;
+}
+
+.genre-btn {
+  background-color: #d9d9d9;
+  color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+  text-decoration: none;
+}
+
+.genre-btn:hover,
+.genre-btn.active {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+/* Navbar Region */
+:root {
+  --primary: D9D9D9;
+  --bg: white;
+}
+
+@font-face {
+  font-family: "AkiraExpanded";
+  src: url("fonts/AkiraExpanded.ttf") format("truetype");
+  font-style: normal;
+}
+
+/* General Styles */
+/* Ketika Mode Terang */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  /* background-color: var(--primary); */
+  color: var(--primary);
+  background-color: white;
+  background-image: url("../IMG/background.png");
+  /* mix-blend-mode: exclusion; */
+}
+
+/* Mode Gelap */
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+}
+
+.navbar .navbar-logo {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.navbar .navbar-logo img {
+  height: 100%;
+  width: auto;
+  margin-right: 10px;
+}
+
+.navbar .navbar-nav a {
+  font-family: "akiraExpanded", sans-serif;
+  color: black;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-left: 45px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav a:hover {
+  color: #2563eb;
+  transition: color 0.3s ease;
+}
+
+.navbar .navbar-logo:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.navbar .navbar-extra {
+  /* font-family: "akiraExpanded", sans-serif; */
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Untuk tombol toggle */
+
+.navbar .navbar-extra a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.navbar .navbar-extra .button {
+  color: white;
+  background-color: #2563eb;
+}
+
+.navbar .navbar-extra .button:hover {
+  background-color: #0e3894;
+  transition: background-color 0.3s ease;
+}
+
+.humbuger {
+  width: 32px; /* Lebar ikon */
+  height: 32px; /* Tinggi ikon */
+  stroke-width: 2.5; /* Ketebalan garis ikon */
+}
+
+/* BANNER SECTION */
+
+.banner {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
+  /* background-color: var(--bg); */
+  /* background-color: brown; */
+  text-align: center;
+  background-image: url("../IMG/backgroundbanner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner .banner-image {
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  padding: 10px;
+}
+
+.content {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: top; */
+  justify-content: center;
+  /* padding: 20px; */
+  /* background-color: var(--bg); */
+}
+
+.content .days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: top;
+  padding: 1px;
+  position: top;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.content .days .day {
+  position: relative;
+  color: black;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.content .days .day:hover {
+  color: #2563eb;
+}
+
+.content .days .day.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Content sesuai Hari */
+
+.comic-list {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    0fr
+  ); /* This might need adjustment based on desired width per card */
+  gap: 3rem;
+  justify-content: center;
+}
+
+.comic-card-link {
+  text-decoration: none; /* Removes the default underline from the link */
+  color: inherit; /* Inherits the text color from its children, so text colors you defined earlier remain */
+  display: block; /* Makes the anchor tag take up the full space of the card, making the entire area clickable */
+}
+
+.comic-cover {
+  width: 100%;
+  height: 100%; /* atur tinggi sesuai keinginan */
+  object-fit: contain; /* supaya gambar nggak gepeng dan tetap penuh */
+  border-radius: 0;
+  background-color: none;
+}
+
+.comic-title,
+.comic-author {
+  font-size: 0.75rem;
+  color: white;
+  margin: 0.3rem 0;
+}
+
+.comic-card-link:hover .comic-desc {
+  opacity: 1;
+  background-color: #2564ebe1;
+  cursor: pointer; /* Explicitly set cursor to pointer when hovering over the clickable area */
+}
+
+.comic-card-link:hover .comic-desc {
+  opacity: 1;
+  background-color: #2564ebe1;
+  cursor: pointer;
+  /* --- ADD THIS --- */
+  pointer-events: auto; /* Re-enable pointer events when hovered */
+}
+
+.comic-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 180px; /* smaller size */
+  height: 100%;
+  margin: auto; /* for centering within grid */
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+  /* Ensure the comic-card itself doesn't have a cursor: pointer; if it's already set on comic-card-link */
+  /* Remove if present: cursor: pointer; */
+}
+
+.comic-title,
+.comic-author {
+  font-size: 0.75rem;
+  color: rgb(160, 29, 29);
+  margin: 0.3rem 0;
+}
+
+.comic-author {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Bagian deskripsi komik */
+
+.comic-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.comic-card:hover .comic-desc {
+  opacity: 1;
+  background-color: #2564ebe1;
+}
+
+/* Karya Baru */
+.karya-baru {
+  text-align: center;
+}
+
+.karya-baru h1 {
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  margin: 20px auto;
+  display: inline-block;
+  font-size: 2rem;
+  width: 836px;
+}
+
+.karya-baru h1:hover {
+  color: #2563eb;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Genre Section */
+.genre {
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 868px;
+}
+
+.genre h1 {
+  color: black;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.genre-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  justify-content: center;
+}
+
+.genre-btn {
+  background-color: #d9d9d9;
+  color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+}
+
+.genre-btn:hover,
+.genre-btn.active {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+/* Navbar Region */
+.language-menu {
+  position: fixed;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #d9d9d9;
+  border-radius: 100px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.language-item {
+  width: 40px;
+  height: 40px;
+  margin: 20px 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.language-item:hover {
+  transform: scale(1.1);
+  background-color: #2563eb;
+  cursor: pointer;
+}
+
+.language-item img {
+  border-radius: 500px;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+/* Tombol panah untuk menampilkan kembali language menu */
+.show-button {
+  position: fixed;
+  left: 3px; /* awal di luar layar */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px 7px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  transition: left 0.5s ease;
+  opacity: 0.5;
+}
+
+.show-button a {
+  color: black;
+  background-color: black;
+  width: 36px;
+  height: 36px;
+  stroke-width: 3; /* Ketebalan garis icon */
+}
+
+/* Ketika tombol panah muncul */
+.show-button.show {
+  left: 10px;
+}
+
+/* Optional: hover effect */
+.show-button:hover {
+  color: #2563eb;
+  opacity: 1;
+}
+
+/* Footer */
+/* Footer*/
+
+footer {
+  background-color: #2563eb;
+  text-align: center;
+  padding: 1rem 0 3rem;
+  margin-top: 3rem;
+}
+
+footer .social {
+  padding: 1rem 0;
+}
+
+footer .social a {
+  color: #fff;
+  margin: 1rem;
+}
+
+footer .social a:hover,
+footer .links a:hover {
+  color: var(--bg);
+}
+
+footer .links {
+  margin-bottom: 1.4rem;
+}
+
+footer .links a {
+  color: #fff;
+  padding: 0.7rem 1rem;
+}
+
+footer .credit {
+  font-size: 0.8rem;
+}
+
+footer .credit a {
+  color: var(--bg);
+  font-weight: 700;
+}

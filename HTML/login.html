@@ -1,50 +1,142 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ONVERSE - Login</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body class="auth-page">
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="auth-page">
     <div class="login-container">
-        <div class="logo-container">
-            <div class="logo-text">ONVERSE</div>
-            <div class="logo-tagline">Explore, Read, and Create!</div>
+      <div class="logo-container">
+        <div class="logo-text">
+          <img src="../IMG/judul.png" alt="" />
         </div>
-        
-        <div class="login-title">Sign-In</div>
-        
-        <form id="login-form">
-            <input type="email" class="input-field" placeholder="Email" required>
-            <input type="password" class="input-field" placeholder="Password" required>
-            
-            <div class="login-buttons">
-                <button type="button" class="kembali-btn" onclick="window.location.href='landing.html'">Kembali</button>
-                <button type="submit" class="login-submit-btn">Login</button>
-            </div>
-        </form>
-        
-        <div class="forgot-password">Lupa kata sandi?</div>
-        <div class="register-link">Belum memiliki akun? <a href="signup.html">Daftar</a></div>
+        <div class="logo-tagline">Explore, Read, and Create!</div>
+      </div>
+
+      <div class="login-title">Sign-In</div>
+
+      <div id="errorMessage" class="error-message"></div>
+      <div id="successMessage" class="success-message"></div>
+
+      <form id="login-form">
+        <input
+          type="email"
+          id="email"
+          class="input-field"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          class="input-field"
+          placeholder="Password"
+          required
+        />
+
+        <div class="login-buttons">
+          <button
+            type="button"
+            class="kembali-btn"
+            onclick="window.location.href='landing.php'"
+          >
+            Return
+          </button>
+          <button type="submit" class="login-submit-btn">Login</button>
+        </div>
+      </form>
+
+      <div class="forgot-password">Forget Password?</div>
+      <div class="register-link">
+        Don't have an account? <a href="signup.html">Sign up</a>
+      </div>
     </div>
 
     <script>
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const email = document.querySelector('input[type="email"]').value;
-            const password = document.querySelector('input[type="password"]').value;
-            
-            if (!email || !password) {
-                alert('Email dan password harus diisi!');
-                return;
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const emailInput = document.getElementById("email");
+          const passwordInput = document.getElementById("password");
+          const errorMessageDiv = document.getElementById("errorMessage");
+          const successMessageDiv = document.getElementById("successMessage");
+
+          errorMessageDiv.textContent = "";
+          errorMessageDiv.style.display = "none";
+          successMessageDiv.textContent = "";
+          successMessageDiv.style.display = "none";
+
+          const email = emailInput.value.trim();
+          const password = passwordInput.value;
+          if (!email || !password) {
+            errorMessageDiv.textContent = "Please fill in all fields!   ";
+            errorMessageDiv.style.display = "block";
+            return;
+          }
+
+          try {
+            const response = await fetch("../php/login.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              successMessageDiv.textContent = data.message;
+              successMessageDiv.style.display = "block";
+
+              sessionStorage.setItem("isLoggedIn", "true");
+              sessionStorage.setItem("user_id", data.user.id); // Simpan user_id
+              sessionStorage.setItem("userName", data.user.username);
+              sessionStorage.setItem("userFullname", data.user.fullname);
+              sessionStorage.setItem("user_email", data.user.email); // Simpan user_email
+
+              const roleFromDb = data.user.role; // Ambil role dari DB response
+              sessionStorage.setItem("userRole", roleFromDb);
+              sessionStorage.setItem("userVerified",data.user.verified ? "true" : "false"); // Simpan status verified
+
+              // --- PENTING: BARU - Simpan verified status dari database ---
+              setTimeout(() => {
+                if (data.user.is_creator && data.user.verified) {
+                  window.location.href = "../Creator's/creator-dashboard.php";
+                  // Check data.user.is_creator from PHP response
+                  // Jika creator dan verified, langsung ke dashboard
+                  if (data.user.verified) {
+                    window.location.href = "landing.php";
+                  } else {
+                    // Jika creator tapi belum verified, bisa ke landing page atau halaman khusus notifikasi
+                    window.location.href = "landing.php";
+                    alert(
+                      "Your creator account is pending verification. You can browse, but cannot publish yet."
+                    );
+                  }
+                } else {
+                  window.location.href = "landing.php";
+                }
+              }, 100);
+            } else {
+              errorMessageDiv.textContent = data.message;
+              errorMessageDiv.style.display = "block";
             }
-            
-            alert('Login berhasil!');
-            window.location.href = 'landing.html';
+          } catch (error) {
+            console.error("Error saat login:", error);
+            errorMessageDiv.textContent =
+              "An error occurred during login. Please try again later.";
+            errorMessageDiv.style.display = "block";
+          }
         });
     </script>
-</body>
+  </body>
 </html>

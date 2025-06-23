@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ONVERSE - All Works</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/genre-page.css" />
+    <link rel="stylesheet" href="../css/landing.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" /> <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* Gaya spesifik untuk halaman ini agar tidak tumpang tindih dengan navbar/sidebar */
+        body {
+            /* Pastikan body tidak memiliki padding-top yang menimpa navbar fixed */
+            padding-top: 60px; /* Tinggi navbar, atau sesuaikan */
+        }
+        .main-content-all-works {
+            /* Pergeseran konten utama saat sidebar terbuka */
+            margin-left: 0; /* Default */
+            transition: margin-left .5s;
+            padding: 20px; /* Tambahkan padding agar konten tidak menempel ke tepi */
+        }
+        /* Kelas yang ditambahkan ke body saat sidebar terbuka */
+        body.sidebar-open .main-content-all-works {
+            margin-left: 350px; /* Lebar sidebar yang terbuka */
+        }
+        .page-title, .sort-section {
+            margin-top: 0; /* Sesuaikan jika perlu ada ruang di bawah navbar */
+            margin-bottom: 20px;
+        }
+        .works-display-section {
+            /* Tidak perlu margin-top lagi jika sudah ada padding di main-content */
+            margin-top: 0; 
+        }
+        /* Pastikan elemen sidebar dan overlay tidak tumpang tindih dengan navbar fixed */
+        #mySidebar { top: 0; height: 100%; } /* Harus fixed dan full height */
+        #sidebar-overlay { top: 0; height: 100%; }
+    </style>
+
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div id="sidebar-container"></div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <main class="main-content-all-works">
+        <h1 class="page-title">All Works</h1>
+
+        <div class="sort-section">
+            <label for="sort-by">Sort</label>
+            <select id="sort-by" class="sort-dropdown">
+                <option value="newest">Newest</option>
+                <option value="popular">Popular</option>
+                <option value="alphabetical">Alphabetical</option>
+            </select>
+        </div>
+
+        <section class="works-display-section">
+            <div class="works-grid" id="worksGrid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="#"><i data-feather="instagram"></i></a>
+            <a href="#"><i data-feather="linkedin"></i></a>
+            <a href="#"><i data-feather="github"></i></a>
+        </div>
+    </footer>
+
+    <script src="../components/sidebar.js"></script>
+    <script src="../JS/script.js"></script> <script>
+        // Global functions (dari landing.html atau script.js yang diimpor)
+        // Fungsi openNav dan closeNav yang memanipulasi class body
+        function openNav() {
+            const mySidebar = document.getElementById("mySidebar");
+            const sidebarOverlay = document.getElementById("sidebar-overlay");
+            if (mySidebar && sidebarOverlay) {
+                mySidebar.style.width = "350px";
+                mySidebar.classList.add("active");
+                sidebarOverlay.style.display = "block";
+                document.body.classList.add("sidebar-open"); // Penting untuk menggeser konten utama
+            }
+        }
+
+        function closeNav() {
+            const mySidebar = document.getElementById("mySidebar");
+            const sidebarOverlay = document.getElementById("sidebar-overlay");
+            if (mySidebar && sidebarOverlay) {
+                mySidebar.style.width = "0";
+                mySidebar.classList.remove("active");
+                sidebarOverlay.style.display = "none";
+                document.body.classList.remove("sidebar-open"); // Hapus kelas
+            }
+        }
+
+        function initializeFeatherIcons() {
+            if (typeof feather !== "undefined") {
+                feather.replace();
+            } else {
+                console.warn("Feather icons library not loaded.");
+            }
+        }
+
+        function renderSidebar() {
+            const sidebarContainer = document.getElementById("sidebar-container");
+            const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
+            const userRole = sessionStorage.getItem("userRole");
+            const userVerified = sessionStorage.getItem("userVerified") === "true";
+
+            if (sidebarContainer) {
+                sidebarContainer.innerHTML = "";
+                const newSidebar = createSidebar(
+                    isLoggedIn,
+                    userRole,
+                    userVerified,
+                    closeNav
+                );
+                sidebarContainer.appendChild(newSidebar);
+            }
+        }
+
+        async function renderNavbar() {
+            const navbarPlaceholder = document.getElementById("navbar-placeholder");
+            const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
+            let navbarPath = isLoggedIn
+                ? "../components/navbar-loggedin.html"
+                : "../components/navbar.html";
+
+            try {
+                const response = await fetch(navbarPath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.text();
+                if (navbarPlaceholder) {
+                    navbarPlaceholder.innerHTML = data;
+                }
+                // Pastikan initializeNavbarFeatures ada di script.js
+                if (typeof initializeNavbarFeatures === "function") {
+                    initializeNavbarFeatures(); // Ini yang akan menginisialisasi hamburger menu
+                } else {
+                    console.warn("initializeNavbarFeatures function not found in script.js. Hamburger menu may not work.");
+                }
+                initializeFeatherIcons();
+            } catch (error) {
+                console.error("Error loading navbar:", error);
+            }
+        }
+
+        // --- Logic untuk halaman ini: Menampilkan Semua Karya ---
+        const worksGrid = document.getElementById("worksGrid");
+        const sortByDropdown = document.getElementById("sort-by");
+
+        // Contoh data komik (akan diganti dengan data dari PHP/API)
+        const allComicsData = [
+            { id: 1, title: "A Couple of Cuckoos", subtitle: "Judul Komik 5", author: "Author 5", img: "https://via.placeholder.com/150x200/4285f4/ffffff?text=Comic+1", genre: "Action", genre2: "Fantasy" },
+            { id: 2, title: "Another Fantasy Story", subtitle: "Judul Komik 6", author: "Author 6", img: "https://via.placeholder.com/150x200/db4437/ffffff?text=Comic+2", genre: "Fantasy", genre2: "Romance" },
+            { id: 3, title: "Mystery of the Old House", subtitle: "Judul Komik 7", author: "Author 7", img: "https://via.placeholder.com/150x200/f4b400/ffffff?text=Comic+3", genre: "Mystery", genre2: "Thriller" },
+            { id: 4, title: "Daily Slice", subtitle: "Judul Komik 8", author: "Author 8", img: "https://via.placeholder.com/150x200/0f9d58/ffffff?text=Comic+4", genre: "Slice of Life", genre2: "Comedy" },
+            { id: 5, title: "Hero Academia", subtitle: "Judul Komik 9", author: "Author 9", img: "https://via.placeholder.com/150x200/4285f4/ffffff?text=Comic+5", genre: "Action", genre2: "Superhero" },
+            { id: 6, title: "Love Song", subtitle: "Judul Komik 10", author: "Author 10", img: "https://via.placeholder.com/150x200/db4437/ffffff?text=Comic+6", genre: "Romance", genre2: "Music" },
+            { id: 7, title: "Mecha Battle Royale", subtitle: "Judul Komik 11", author: "Author 11", img: "https://via.placeholder.com/150x200/f4b400/ffffff?text=Comic+7", genre: "Mecha", genre2: "Action" },
+            { id: 8, title: "Isekai Dungeon", subtitle: "Judul Komik 12", author: "Author 12", img: "https://via.placeholder.com/150x200/0f9d58/ffffff?text=Comic+8", genre: "Isekai", genre2: "Fantasy" },
+            { id: 9, title: "The Mind Game", subtitle: "Judul Komik 13", author: "Author 13", img: "https://via.placeholder.com/150x200/4285f4/ffffff?text=Comic+9", genre: "Psychological", genre2: "Drama" },
+            { id: 10, title: "High School Life", subtitle: "Judul Komik 14", author: "Author 14", img: "https://via.placeholder.com/150x200/db4437/ffffff?text=Comic+10", genre: "School Life", genre2: "Comedy" },
+            { id: 11, title: "Ancient Tales", subtitle: "Judul Komik 15", author: "Author 15", img: "https://via.placeholder.com/150x200/f4b400/ffffff?text=Comic+11", genre: "Historical", genre2: "Adventure" },
+            { id: 12, title: "Beyond the Stars", subtitle: "Judul Komik 16", author: "Author 16", img: "https://via.placeholder.com/150x200/0f9d58/ffffff?text=Comic+12", genre: "Sci-Fi", genre2: "Adventure" },
+        ];
+
+
+        // Function to create a comic card HTML element
+        function createComicCard(comic) {
+            const cardLink = document.createElement("a");
+            cardLink.href = "detail-page.html?id=" + comic.id; // Link ke detail komik
+            cardLink.classList.add("comic-card-link"); // Class dari genre-page.css
+
+            const card = document.createElement("div");
+            card.classList.add("comic-card"); // Class dari genre-page.css
+
+            card.innerHTML = `
+                <img src="${comic.img}" alt="Comic Cover">
+                <h3 class="comic-title">${comic.title}</h3>
+                <p class="comic-author">${comic.author}</p>
+            `;
+            cardLink.appendChild(card);
+            return cardLink;
+        }
+
+        // Function to render comics based on sort order
+        function renderAllComics(sortOrder = 'newest') {
+            let sortedComics = [...allComicsData]; 
+
+            if (sortOrder === 'alphabetical') {
+                sortedComics.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (sortOrder === 'popular') {
+                sortedComics.sort((a, b) => b.id - a.id); 
+            } else if (sortOrder === 'newest') {
+                sortedComics.sort((a, b) => b.id - a.id); 
+            }
+
+            worksGrid.innerHTML = "";
+            sortedComics.forEach((comic) => {
+                worksGrid.appendChild(createComicCard(comic));
+            });
+        }
+
+        sortByDropdown.addEventListener('change', (event) => {
+            renderAllComics(event.target.value);
+        });
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            await Promise.all([
+                renderNavbar(), 
+                renderSidebar()
+            ]);
+
+            renderAllComics('newest'); 
+            initializeFeatherIcons();
+        });
+    </script>
+</body>
+</html>

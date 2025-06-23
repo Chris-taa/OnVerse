@@ -1,3 +1,5 @@
+// script.js
+
 // Function to initialize all main page features (excluding component-specific ones)
 function initializeLandingPageFeatures() {
     // ========== HIGHLIGHT HARI SEKARANG ==========
@@ -22,7 +24,6 @@ function initializeLandingPageFeatures() {
     }
 
     // You can add more initialization for other sections of landing.html here if needed.
-    // For example, if you had interactive elements within .daily or .karya-baru sections.
 }
 
 
@@ -37,17 +38,7 @@ function initializeNavbarFeatures() {
         return;
     }
 
-    window.openNav = function() {
-        mySidebar.style.width = "350px";
-        mySidebar.classList.add("active");
-        sidebarOverlay.style.display = "block";
-    }
-
-    window.closeNav = function() {
-        mySidebar.style.width = "0";
-        mySidebar.classList.remove("active");
-        sidebarOverlay.style.display = "none";
-    }
+    // openNav dan closeNav sudah didefinisikan secara global di inline script landing.html
 
     const hamburgerMenu = document.getElementById("hambuger-menu");
     if (hamburgerMenu) {
@@ -60,18 +51,24 @@ function initializeNavbarFeatures() {
 
     function toggleSidebar(e) {
         e.preventDefault();
+        // Memanggil fungsi global openNav/closeNav
         if (mySidebar.classList.contains("active")) {
-            closeNav();
+            window.closeNav();
         } else {
-            openNav();
+            window.openNav();
         }
     }
 
+    // close button di sidebar (yang dibuat secara dinamis oleh sidebar.js)
+    // event listener untuk tombol close sidebar sudah ditangani oleh createSidebar di sidebar.js,
+    // yang memanggil closeNavFunction (yaitu window.closeNav). Jadi ini tidak perlu di sini.
+    /*
     const closeButton = document.querySelector("#mySidebar .closebtn");
     if (closeButton) {
-        closeButton.removeEventListener("click", window.closeNav); // Use window.closeNav for direct reference
+        closeButton.removeEventListener("click", window.closeNav);
         closeButton.addEventListener("click", window.closeNav);
     }
+    */
 
     if (sidebarOverlay) {
         sidebarOverlay.removeEventListener("click", window.closeNav); // Use window.closeNav
@@ -166,61 +163,24 @@ function initializeNavbarFeatures() {
     } else {
         console.warn("Language menu or show button not found in initializeNavbarFeatures.");
     }
+
+    // Cek jika pengguna login untuk mengupdate nama dan foto profil
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    if (isLoggedIn) {
+        const usernameElement = document.querySelector('.navbar .username'); // Gunakan class selector
+        const profilePicElement = document.querySelector('.navbar .profile-pic'); // Gunakan class selector
+
+        const userName = sessionStorage.getItem('userName');
+        const userProfilePic = sessionStorage.getItem('userProfilePic') || '../IMG/cover.jpg'; // Gambar default
+
+        if (usernameElement && userName) {
+            usernameElement.textContent = userName;
+        }
+
+        if (profilePicElement) {
+            profilePicElement.src = userProfilePic;
+        }
+    }
 }
 
-
-// ==================== Inisialisasi semua fitur utama halaman utama ========================
-document.addEventListener("DOMContentLoaded", function () {
-        const loadNavbar = fetch("../components/navbar.html")
-          .then((response) => response.text())
-          .then((data) => {
-            const navbarPlaceholder =
-              document.getElementById("navbar-placeholder");
-            if (navbarPlaceholder) {
-              // Pastikan placeholder ada
-              navbarPlaceholder.innerHTML = data;
-            } else {
-              console.error("Navbar placeholder not found!");
-            }
-          })
-          .catch((error) => {
-            console.error("Error loading navbar:", error);
-          });
-
-        const loadFooter = fetch("../components/footer.html")
-          .then((response) => response.text())
-          .then((data) => {
-            const footerPlaceholder =
-              document.getElementById("footer-placeholder");
-            if (footerPlaceholder) {
-              // Pastikan placeholder ada
-              footerPlaceholder.innerHTML = data;
-            } else {
-              console.error("Footer placeholder not found!");
-            }
-          })
-          .catch((error) => {
-            console.error("Error loading footer:", error);
-          });
-
-        // Jalankan semua inisialisasi setelah navbar dan footer terisi
-        Promise.all([loadNavbar, loadFooter])
-          .then(() => {
-            // Pastikan fungsi-fungsi ini didefinisikan di script.js
-            if (typeof initializeNavbarFeatures === "function") {
-              initializeNavbarFeatures();
-            }
-            if (typeof initializeLandingPageFeatures === "function") {
-              initializeLandingPageFeatures();
-            }
-            feather.replace(); // Ganti ikon Feather setelah semua HTML ada
-          })
-          .catch((error) => {
-            console.error("One or more components failed to load:", error);
-          });
-      });
-
-      // Penting: Pastikan initializeNavbarFeatures dan initializeLandingPageFeatures
-      // didefinisikan secara global (misalnya di script.js) agar bisa diakses di sini.
-      // function initializeNavbarFeatures() { /* ... */ }
-      // function initializeLandingPageFeatures() { /* ... */ }
+// Tidak ada lagi DOMContentLoaded di sini. Fungsi-fungsi ini bersifat global.

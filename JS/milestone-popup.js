@@ -1,59 +1,76 @@
+// milestone-popup.js
+
 document.addEventListener('DOMContentLoaded', () => {
-  const openMilestonePopupBtn = document.getElementById('openMilestonePopupBtn');
-  const milestonePopup = document.getElementById('milestonePopup');
-  const closeButton = milestonePopup.querySelector('.close-button');
+    // These elements might not exist immediately if loaded dynamically.
+    // Ensure they are selected after the DOM is fully constructed and dynamic elements are added.
+    const milestonePopup = document.getElementById('milestonePopup');
+    const closeButton = milestonePopup ? milestonePopup.querySelector('.close-button') : null;
 
-  const sidebar = document.getElementById('mySidebar');
-  const sidebarOverlay = document.getElementById('sidebar-overlay');
+    // Function to initialize milestone popup listeners
+    // This function can be called after the sidebar is rendered to ensure the button exists
+    function initializeMilestonePopup() {
+        const openMilestonePopupBtn = document.getElementById('openMilestonePopupBtn');
+        const sidebar = document.getElementById('mySidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-  // Function to open the pop-up
-  if (openMilestonePopupBtn) {
-    openMilestonePopupBtn.addEventListener('click', (event) => {
-      event.preventDefault();
+        if (openMilestonePopupBtn) {
+            openMilestonePopupBtn.removeEventListener('click', handleOpenMilestonePopup); // Prevent duplicate listeners
+            openMilestonePopupBtn.addEventListener('click', handleOpenMilestonePopup);
+        }
+    }
 
-      // Show the pop-up overlay (it will animate from opacity 0 to 1)
-      milestonePopup.style.display = 'flex';
-      // Add 'active' class to trigger content animation
-      // Use a small timeout to allow display:flex to render before transition starts
-      setTimeout(() => {
-        milestonePopup.classList.add('active');
-      }, 10); // Small delay, adjust if needed
+    function handleOpenMilestonePopup(event) {
+        event.preventDefault();
+        const milestonePopup = document.getElementById('milestonePopup');
+        const sidebar = document.getElementById('mySidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-      // Close the sidebar when "Milestone Harian" is clicked
-      if (sidebar) {
-        sidebar.style.width = '0';
-      }
-      if (sidebarOverlay) {
-        sidebarOverlay.style.display = 'none';
-      }
-    });
-  }
+        if (milestonePopup) {
+            milestonePopup.style.display = 'flex';
+            setTimeout(() => {
+                milestonePopup.classList.add('active');
+            }, 10);
+        }
 
-  // Function to close the pop-up when the close button is clicked
-  if (closeButton) {
-    closeButton.addEventListener('click', () => {
-      // Remove 'active' class to trigger reverse animation
-      milestonePopup.classList.remove('active');
-      // Hide the pop-up overlay after the animation completes
-      milestonePopup.addEventListener('transitionend', function handler() {
-        milestonePopup.style.display = 'none';
-        milestonePopup.removeEventListener('transitionend', handler); // Remove listener to prevent multiple calls
-      });
-    });
-  }
+        if (sidebar) {
+            sidebar.style.width = '0';
+        }
+        if (sidebarOverlay) {
+            sidebarOverlay.style.display = 'none';
+        }
+    }
 
-  // Function to close the pop-up when clicking outside the pop-up content
-  if (milestonePopup) {
-    milestonePopup.addEventListener('click', (event) => {
-      if (event.target === milestonePopup) {
-        // Remove 'active' class to trigger reverse animation
-        milestonePopup.classList.remove('active');
-        // Hide the pop-up overlay after the animation completes
-        milestonePopup.addEventListener('transitionend', function handler() {
-          milestonePopup.style.display = 'none';
-          milestonePopup.removeEventListener('transitionend', handler);
+    // Function to close the pop-up when the close button is clicked
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            if (milestonePopup) {
+                milestonePopup.classList.remove('active');
+                milestonePopup.addEventListener('transitionend', function handler() {
+                    milestonePopup.style.display = 'none';
+                    milestonePopup.removeEventListener('transitionend', handler);
+                }, { once: true }); // Use { once: true } for cleaner event removal
+            }
         });
-      }
-    });
-  }
+    }
+
+    // Function to close the pop-up when clicking outside the pop-up content
+    if (milestonePopup) {
+        milestonePopup.addEventListener('click', (event) => {
+            if (event.target === milestonePopup) {
+                milestonePopup.classList.remove('active');
+                milestonePopup.addEventListener('transitionend', function handler() {
+                    milestonePopup.style.display = 'none';
+                    milestonePopup.removeEventListener('transitionend', handler);
+                }, { once: true }); // Use { once: true }
+            }
+        });
+    }
+
+    // Call initializeMilestonePopup after the DOM is ready and likely after sidebar has rendered
+    // This is called directly on DOMContentLoaded in landing.html's inline script
+    // or you can call it here if you ensure sidebar creation happens first.
+    // For now, the inline script in landing.html handles calling this after renderSidebar().
 });
+
+// Make initializeMilestonePopup globally accessible if called from landing.html inline script
+window.initializeMilestonePopup = initializeMilestonePopup;
