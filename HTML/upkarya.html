@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONVERSE - Upload Chapter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .buatkarya-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 56, 180, 0.3);
+            width: 1200px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-text {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .buatkarya-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .buatkarya-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .form-input {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+        
+        .file-upload-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .file-upload-btn {
+            background: #0038B4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-upload-btn:hover {
+            background: #357ae8;
+        }
+
+        .clear-all-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .clear-all-btn:hover {
+            background: #c82333;
+        }
+
+        .file-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .save-draft-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .save-draft-btn:hover {
+            background: #545b62;
+        }
+
+        .uploaded-images {
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 10px;
+            background: white;
+        }
+
+        .image-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 5px;
+        }
+
+        .image-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .image-preview {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .image-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .image-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .image-size {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .remove-image-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-image-btn:hover {
+            background: #c82333;
+        }
+
+        .images-counter {
+            font-size: 12px;
+            color: #4285f4;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .radio-input {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-input.checked {
+            border-color: #0038B4;
+            background: #0038B4;
+        }
+
+        .radio-input.checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .schedule-inputs {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .schedule-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        .buatkarya-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-top: 20px;
+        }
+
+        .kembali-btn, .signup-submit-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .kembali-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .kembali-btn:hover {
+            background-color: #d0d0d0;
+        }
+
+        .signup-submit-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .signup-submit-btn:hover {
+            background-color: #0038B4;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="auth-page">
+    <div class="buatkarya-container">
+        <div class="logo-container">
+            <div class="logo-text">ONVERSE</div>
+        </div>
+        
+        <div class="buatkarya-title">Judul: Judul Karya</div>
+        
+        <div class="buatkarya-form">
+            
+            <div class="form-group">
+                <label class="form-label">Judul Chapter</label>
+                <input type="text" class="form-input" placeholder="Masukkan judul chapter">
+            </div>
+            
+            <div class="form-group" style="grid-column: 1">
+                <label class="form-label">Unggah Gambar</label>
+                <div class="file-upload-section">
+                    <button class="file-upload-btn" onclick="document.getElementById('chapter-images').click()">
+                        Pilih gambar untuk diunggah
+                    </button>
+                    <button class="clear-all-btn" onclick="clearAllImages()">Hapus Semua</button>
+                    <div class="file-info">*File yang diterima berupa PNG (dapat memilih banyak gambar sekaligus)</div>
+                    <div class="images-counter" id="images-counter">0 gambar dipilih</div>
+                    <div class="uploaded-images" id="uploaded-images" style="display: none;"></div>
+                    <button class="save-draft-btn" onclick="saveDraft()">Simpan draft</button>
+                </div>
+                <input type="file" id="chapter-images" style="display: none;" accept=".png" multiple>
+            </div>
+
+            <div class="form-group" style="grid-column: 1">
+                <label class="form-label">Kolom Komentar</label>
+                <div class="radio-group">
+                    <div class="radio-option" onclick="toggleRadio('comments', 'on')">
+                        <div class="radio-input checked" id="comments-on"></div>
+                        <span>Nyala</span>
+                    </div>
+                    <div class="radio-option" onclick="toggleRadio('comments', 'off')">
+                        <div class="radio-input" id="comments-off"></div>
+                        <span>Mati</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="grid-column: 1">
+                <label class="form-label">Terbitkan</label>
+                <div class="radio-group">
+                    <div class="radio-option" onclick="toggleRadio('publish', 'now')">
+                        <div class="radio-input" id="publish-now"></div>
+                        <span>Sekarang</span>
+                    </div>
+                    <div class="radio-option" onclick="toggleRadio('publish', 'schedule')">
+                        <div class="radio-input checked" id="publish-schedule"></div>
+                        <span>Jadwalkan</span>
+                    </div>
+                </div>
+                <div class="schedule-inputs" id="schedule-fields">
+                    <input type="date" class="schedule-input" placeholder="Tanggal">
+                    <input type="time" class="schedule-input" placeholder="Jam">
+                    <input type="number" class="schedule-input" placeholder="Menit" min="0" max="59">
+                </div>
+            </div>
+        </div>
+        
+        <div class="buatkarya-buttons">
+            <button class="kembali-btn" onclick="goBack()">Kembali</button>
+            <button class="signup-submit-btn" onclick="publishChapter()">Terbitkan</button>
+        </div>
+    </div>
+
+    <script>
+        let uploadedImages = [];
+
+        // Handle multiple image upload
+        document.getElementById('chapter-images').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            
+            files.forEach(file => {
+                if (file.type === 'image/png') {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const imageData = {
+                            file: file,
+                            name: file.name,
+                            size: formatFileSize(file.size),
+                            src: event.target.result,
+                            id: Date.now() + Math.random()
+                        };
+                        uploadedImages.push(imageData);
+                        updateImageDisplay();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert(`File ${file.name} bukan format PNG. Hanya file PNG yang diterima.`);
+                }
+            });
+        });
+
+        function updateImageDisplay() {
+            const counter = document.getElementById('images-counter');
+            const container = document.getElementById('uploaded-images');
+            
+            counter.textContent = `${uploadedImages.length} gambar dipilih`;
+            
+            if (uploadedImages.length > 0) {
+                container.style.display = 'block';
+                container.innerHTML = uploadedImages.map(img => `
+                        <div class="image-item">
+                            <img src="${img.src}" alt="${img.name}" class="image-preview">
+                            <div class="image-info">
+                                <div class="image-name">${img.name}</div>
+                                <div class="image-size">${img.size}</div>
+                            </div>
+                            <button class="remove-image-btn" onclick="removeImage('${img.id}')">Hapus</button>
+                        </div>
+                    `).join('');
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        function removeImage(imageId) {
+            uploadedImages = uploadedImages.filter(img => img.id != imageId);
+            updateImageDisplay();
+        }
+
+        function clearAllImages() {
+            uploadedImages = [];
+            document.getElementById('chapter-images').value = '';
+            updateImageDisplay();
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Radio button functionality
+        function toggleRadio(group, option) {
+            if (group === 'comments') {
+                document.getElementById('comments-on').classList.remove('checked');
+                document.getElementById('comments-off').classList.remove('checked');
+                document.getElementById(`comments-${option}`).classList.add('checked');
+            } else if (group === 'publish') {
+                document.getElementById('publish-now').classList.remove('checked');
+                document.getElementById('publish-schedule').classList.remove('checked');
+                document.getElementById(`publish-${option}`).classList.add('checked');
+                
+                const scheduleFields = document.getElementById('schedule-fields');
+                if (option === 'schedule') {
+                    scheduleFields.style.display = 'flex';
+                } else {
+                    scheduleFields.style.display = 'none';
+                }
+            }
+        }
+
+        // Utility functions
+        function goBack() {
+            history.back();
+        }
+
+        function saveDraft() {
+            alert(`Draft berhasil disimpan dengan ${uploadedImages.length} gambar!`);
+        }
+
+        function publishChapter() {
+            if (uploadedImages.length === 0) {
+                alert('Silakan pilih minimal satu gambar PNG untuk diunggah.');
+                return;
+            }
+            alert(`Chapter berhasil diterbitkan dengan ${uploadedImages.length} gambar!`);
+        }
+
+        // Initialize schedule fields visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const scheduleFields = document.getElementById('schedule-fields');
+            if (document.getElementById('publish-schedule').classList.contains('checked')) {
+                scheduleFields.style.display = 'flex';
+            } else {
+                scheduleFields.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

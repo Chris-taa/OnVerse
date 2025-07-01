@@ -22,9 +22,19 @@
   <body>
     <div id="navbar-placeholder"></div>
 
-    <div id="sidebar-container"></div>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="#">View All Works</a>
+      <a href="#">Daily Login</a>
+      <a href="#" id="openMilestonePopupBtn">Daily Milestones</a>
+      <a href="#">This Week's Popular</a>
+      <a href="#">Premium</a>
+      <a href="#">Community</a>
+      <a href="ProfilePage.html">My Account</a>
+    </div>
     <div id="sidebar-overlay" class="sidebar-overlay"></div>
-
     <section class="banner">
       <img src="../IMG/banner.png" alt="Banner" class="banner-image" />
       <div class="banner-carousel"></div>
@@ -34,7 +44,7 @@
       <div class="days">
         <a href="#sunday" class="day" data-day="Sunday">SUN</a>
         <a href="#monday" class="day" data-day="Monday">MON</a>
-        <a href="#tuesday" class="day" data-day="TUE">TUE</a>
+        <a href="#tuesday" class="day" data-day="Tuesday">TUE</a>
         <a href="#wednesday" class="day" data-day="Wednesday">WED</a>
         <a href="#thursday" class="day" data-day="Thursday">THU</a>
         <a href="#friday" class="day" data-day="Friday">FRI</a>
@@ -282,82 +292,7 @@
         <span class="close-button">&times;</span>
       </div>
     </div>
-    <script src="../components/sidebar.js"></script>
     <script src="../JS/script.js"></script>
     <script src="../JS/milestone-popup.js"></script>
-    <script>
-      // Global function for opening/closing sidebar, needs to be accessible
-      function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("sidebar-overlay").style.display = "block";
-      }
-
-      function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("sidebar-overlay").style.display = "none";
-      }
-
-      // Re-initialize Feather icons after dynamic content is added
-      function initializeFeatherIcons() {
-        feather.replace();
-      }
-
-      // Function to load and render sidebar based on login status
-      function renderSidebar() {
-        const sidebarContainer = document.getElementById("sidebar-container");
-        const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
-        const userRole = sessionStorage.getItem("userRole"); // 'creator', 'regular', or null
-
-        // Clear existing sidebar
-        sidebarContainer.innerHTML = "";
-
-        // Create and append the new sidebar
-        const newSidebar = createSidebar(isLoggedIn, userRole, closeNav);
-        sidebarContainer.appendChild(newSidebar);
-
-        // Re-attach event listener for the Daily Milestones button IF it exists
-        const openMilestonePopupBtn = document.getElementById(
-          "openMilestonePopupBtn"
-        );
-        if (openMilestonePopupBtn) {
-          openMilestonePopupBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            const milestonePopup = document.getElementById("milestonePopup");
-            const sidebar = document.getElementById("mySidebar");
-            const sidebarOverlay = document.getElementById("sidebar-overlay");
-
-            milestonePopup.style.display = "flex";
-            setTimeout(() => {
-              milestonePopup.classList.add("active");
-            }, 10);
-
-            if (sidebar) {
-              sidebar.style.width = "0";
-            }
-            if (sidebarOverlay) {
-              sidebarOverlay.style.display = "none";
-            }
-          });
-        }
-      }
-
-      // Call renderSidebar on DOMContentLoaded to set initial state
-      document.addEventListener("DOMContentLoaded", () => {
-        renderSidebar(); // Render sidebar on page load
-
-        // ... (rest of your existing DOMContentLoaded logic from script.js and milestone-popup.js) ...
-        // You'll need to move the milestone popup specific event listeners here or ensure they are re-attached
-        // after the sidebar is dynamically created.
-
-        // Re-initialize feather icons after the sidebar content is loaded
-        initializeFeatherIcons();
-      });
-
-      // You'll also need to ensure that your `LoginPage.html` (or wherever login happens)
-      // sets `sessionStorage.setItem('isLoggedIn', 'true');` and
-      // `sessionStorage.setItem('userRole', 'creator');` (or 'regular') upon successful login,
-      // and then redirects to `landing.html`.
-      // Upon redirection, `renderSidebar()` will be called by DOMContentLoaded and update the sidebar.
-    </script>
   </body>
 </html>

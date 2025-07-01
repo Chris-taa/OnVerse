@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baca Komik - Judul Komik Anda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variabel dari CSS Anda yang relevan */
+        :root {
+            --primary-blue: #2563EB;
+            --dark-blue: #0e3894;
+            --white: #ffffff;
+            --dark-text: #333;
+            --gray-text: #666;
+            --border-color: #ddd;
+            --bg-light: #f0f2f5;
+            --header-dark-bg: #333;
+        }
+
+        /* Gaya Umum */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .reader-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Mirip Navbar Landing */
+        .reader-header {
+            display: flex;
+            /* Menggunakan space-between untuk mendorong item ke tepi */
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: var(--header-dark-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .reader-header .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            /* Memberikan flex-grow agar mendorong chapter-nav ke tengah */
+            flex-grow: 1;
+            /* Batasi lebar agar tidak terlalu jauh ke tengah */
+            max-width: 300px; /* Sesuaikan sesuai kebutuhan */
+        }
+
+        .reader-header .back-button {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        .reader-header .back-button:hover {
+            color: #eee;
+        }
+
+        .reader-header .comic-title-display {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0;
+            white-space: nowrap; /* Mencegah judul pecah baris */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Gaya Chapter Navigasi Baru */
+        .reader-header .chapter-nav {
+            font-size: 1.1em;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            /* Penting: Margin auto kiri-kanan untuk memposisikan di tengah sisa ruang */
+            margin: 0 auto;
+            /* Tambahkan flex-shrink agar tidak mengecil jika ada elemen lain yang sangat panjang */
+            flex-shrink: 0;
+        }
+
+        .reader-header .chapter-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+
+        .reader-header .chapter-nav a:hover {
+            color: #ccc;
+        }
+
+        .reader-header .right-section {
+            display: flex;
+            gap: 20px;
+            /* Memberikan flex-grow agar mendorong chapter-nav ke tengah */
+            flex-grow: 1;
+            justify-content: flex-end; /* Memastikan ikon di kanan tetap di kanan */
+            /* Batasi lebar agar tidak terlalu jauh ke tengah */
+            max-width: 300px; /* Sesuaikan sesuai kebutuhan */
+        }
+
+        .reader-header .icon-button {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.3em;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .reader-header .icon-button:hover {
+            color: #eee;
+        }
+
+        /* Viewer Komik */
+        .comic-page-viewer {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            background-color: var(--bg-light);
+        }
+
+        .comic-page {
+            max-width: 800px;
+            width: 90%;
+            height: auto;
+            display: block;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--white);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .reader-header {
+                padding: 10px 20px;
+            }
+            .reader-header .left-section,
+            .reader-header .right-section {
+                /* Di mobile, biarkan mereka mengambil ruang sesuai konten */
+                flex-grow: 0;
+                max-width: none;
+            }
+            .reader-header .left-section {
+                gap: 10px;
+            }
+            .reader-header .comic-title-display {
+                font-size: 1em;
+            }
+            .reader-header .chapter-nav {
+                font-size: 1em; /* Sedikit lebih kecil di mobile */
+                gap: 5px;
+            }
+            .reader-header .right-section {
+                gap: 15px;
+            }
+            .reader-header .icon-button {
+                font-size: 1.1em;
+            }
+            .comic-page {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reader-header {
+                padding: 10px 15px;
+            }
+            .reader-header .left-section {
+                gap: 8px;
+            }
+            .reader-header .comic-title-display {
+                font-size: 0.9em;
+            }
+            .reader-header .chapter-nav {
+                font-size: 0.9em;
+            }
+            .reader-header .right-section {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reader-container">
+        <header class="reader-header">
+            <div class="left-section">
+                <a href="#" class="back-button"><i class="fa-solid fa-arrow-left"></i></a>
+                <span class="comic-title-display">Judul Komik Anda</span>
+            </div>
+            <div class="chapter-nav">
+                <a href="#" aria-label="Previous Chapter"><i class="fa-solid fa-chevron-left"></i></a>
+                <span class="current-chapter">Chapter</span>
+                <a href="#" aria-label="Next Chapter"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="right-section">
+                <button class="icon-button"><i class="fa-regular fa-bookmark"></i></button>
+                <button class="icon-button"><i class="fa-regular fa-comment"></i></button>
+            </div>
+        </header>
+   <main class="comic-page-viewer">
+            <img src="Group 36.png" alt="Halaman Komik 1" class="comic-page">
+            </main>
+    </div>
+</body>
+</html>
