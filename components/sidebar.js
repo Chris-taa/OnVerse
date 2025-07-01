@@ -29,7 +29,7 @@ function createSidebar(isLoggedIn, userRole, userVerified, closeNavFunction) { /
       { text: "View All Works", href: "view-works.html" },
       { text: "This Week's Popular", href: "#" },
       { text: "Premium", href: "#" },
-      { text: "Community", href: "#" },
+      { text: "Community", href: "community-home.php" },
       { text: "Login / Register", href: "login.html" }, // Sesuaikan ke LoginPage.html
     ];
   } else {
@@ -37,10 +37,10 @@ function createSidebar(isLoggedIn, userRole, userVerified, closeNavFunction) { /
     linksData = [
       { text: "View All Works", href: "view-works.html" },
       { text: "Daily Login", href: "#" },
-      { text: "Daily Milestones", href: "#", id: "openMilestonePopupBtn" },
+      { text: "Daily Milestones", href: "#openMilestonePopupBtn", id: "openMilestonePopupBtn" },
       { text: "This Week's Popular", href: "#" },
       { text: "Premium", href: "#" },
-      { text: "Community", href: "#" },
+      { text: "Community", href: "../community/community-home.php" },
       // Link "Publish" selalu ada jika logged in, tetapi mungkin diblokir di PHP jika belum verified
       { text: "Publish", href: "../HTML/create-karya.html" }, 
     ];

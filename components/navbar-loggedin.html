@@ -1,69 +1,70 @@
 <nav class="navbar">
-    <img
-        src="../IMG/judul.png"
-        alt="Judul"
-        class="navbar-logo"
-        href="#judul"
-        id="judul"
-    />
-    <div class="navbar-nav">
-        <a href="#genre"> GENRE </a>
-        <a href="#populer"> POPULER </a>
-    </div>
+  <img
+    src="../IMG/judul.png"
+    alt="Judul"
+    class="navbar-logo"
+    href="#judul"
+    id="judul"
+  />
+  <div class="navbar-search">
+    <form action="/search" method="get">
+      <input type="text" name="q" placeholder="Cari..." />
+      <button type="submit"><i data-feather="search"></i></button>
+    </form>
+  </div>
 
-    <div class="navbar-extra">
-        <a href="#toggle" class="button" id="toggle-button"
-            ><i data-feather="toggle-left"></i
-        ></a>
-        <div class="user-profile">
-            <a href="profile.html" class="profile-link">
-                <img src="../IMG/cover.jpg" alt="Profile" class="profile-pic" />
-                <span class="username">Username</span>
-            </a>
-            </div>
-        <a href="#" id="hambuger-menu"
-            ><i data-feather="menu" class="humbuger"></i
-        ></a>
+  <div class="navbar-extra">
+    <a href="#toggle" class="button" id="toggle-button"
+      ><i data-feather="toggle-left"></i
+    ></a>
+    <div class="user-profile">
+      <a href="profile.html" class="profile-link">
+        <img src="../IMG/cover.jpg" alt="Profile" class="profile-pic" />
+        <span class="username">Username</span>
+      </a>
     </div>
+    <a href="#" id="hambuger-menu"
+      ><i data-feather="menu" class="humbuger"></i
+    ></a>
+  </div>
 </nav>
 
 <style>
-        /* Styling dasar untuk profile pic dan username di navbar */
+  /* Styling dasar untuk profile pic dan username di navbar */
 
-    .navbar{
-        height: 47px;
-    }
-    .user-profile {
-        display: flex;
-        align-items: center;
-    }
+  .navbar {
+    height: 47px;
+  }
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
 
-    .profile-link {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: inherit; /* Ikuti warna teks navbar */
-    }
+  .profile-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Ikuti warna teks navbar */
+  }
 
-    .profile-pic {
-        margin-right: 10px;
-        width: 45px; /* Sesuaikan ukuran */
-        height: 45px; /* Sesuaikan ukuran */
-        border-radius: 50%; /* Membuat gambar lingkaran */
-        object-fit: cover; /* Memastikan gambar terisi dengan baik */
-        
-    }
+  .profile-pic {
+    margin-right: 10px;
+    width: 45px; /* Sesuaikan ukuran */
+    height: 45px; /* Sesuaikan ukuran */
+    border-radius: 50%; /* Membuat gambar lingkaran */
+    object-fit: cover; /* Memastikan gambar terisi dengan baik */
+  }
 
-    .username {
-        font-weight: 600;
-        font-size: 1rem;
-        color: black; /* Warna teks username, sesuaikan dengan desain Anda */
-    }
+  .username {
+    font-weight: 600;
+    font-size: 1rem;
+    color: black; /* Warna teks username, sesuaikan dengan desain Anda */
+  }
 
-    /* Tambahkan style untuk navbar-extra jika belum ada, agar item sejajar */
-    .navbar-extra {
-        display: flex;
-        align-items: center;
-         /* Jarak antara elemen-elemen di navbar-extra */
-    }
+  /* Tambahkan style untuk navbar-extra jika belum ada, agar item sejajar */
+  .navbar-extra {
+    display: flex;
+    align-items: center;
+    /* Jarak antara elemen-elemen di navbar-extra */
+  }
 </style>

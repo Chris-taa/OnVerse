@@ -1,0 +1,542 @@
+/* ==================== */
+/* GENERAL COMMUNITY STYLES */
+/* ==================== */
+body.community-page {
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.community-container {
+    max-width: 960px;
+    margin: 100px auto 40px;
+    padding: 0 1rem;
+}
+
+.community-container>h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #1c1e21;
+}
+
+.community-container>p.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #65676b;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==================== */
+/* COMMUNITY GRID SYSTEM */
+/* ==================== */
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.community-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.community-card-link:hover {
+    transform: translateY(-3px);
+}
+
+.community-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.community-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.card-body {
+    padding: 1.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #1c1e21;
+}
+
+.card-meta {
+    font-size: 0.9rem;
+    color: #65676b;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-creator,
+.card-members {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-creator .feather,
+.card-members .feather {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: #65676b;
+    margin-top: 0.75rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-body .btn {
+    margin-top: 1rem;
+    align-self: flex-start;
+    /* atau stretch jika ingin full width */
+}
+
+/* Atau alternatif */
+.card-body {
+    padding-bottom: 1.25rem;
+    /* Pastikan ada padding bawah */
+}
+
+/* ==================== */
+/* COMMUNITY DETAIL PAGE */
+/* ==================== */
+.community-detail-header {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    color: #fff;
+    margin-top: 60px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.header-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 20%, transparent 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0 0 0.5rem 0;
+}
+
+.header-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== */
+/* THREAD STYLES */
+/* ==================== */
+.content-panel {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Tambahkan padding khusus untuk form */
+.create-thread-form {
+    padding: 1rem 0;
+}
+
+.thread-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddfe2;
+}
+
+.thread-actions h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.thread-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.thread-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #dddfe2;
+    transition: background-color 0.2s ease;
+}
+
+.thread-item:hover {
+    background-color: #f7f7f7;
+}
+
+.thread-main {
+    flex-grow: 1;
+}
+
+.thread-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.thread-meta {
+    font-size: 0.85rem;
+    color: #65676b;
+}
+
+.thread-stats {
+    display: flex;
+    gap: 1.5rem;
+    color: #65676b;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.thread-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* ==================== */
+/* THREAD DETAIL PAGE */
+/* ==================== */
+.thread-post-container {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #dddfe2;
+}
+
+.post-author-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.post-timestamp {
+    font-size: 0.9rem;
+    color: #65676b;
+}
+
+.thread-post-body h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+}
+
+.thread-post-body p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* ==================== */
+/* REPLY STYLES */
+/* ==================== */
+.replies-container {
+    margin-top: 2rem;
+}
+
+.replies-container h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dddfe2;
+}
+
+.comment-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.comment-body {
+    margin-top: 0.75rem;
+    line-height: 1.6;
+}
+
+.thread-post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+}
+
+/* ==================== */
+/* BUTTON STYLES */
+/* ==================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    font-size: 0.95rem;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #1877f2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #166fe5;
+}
+
+.btn-secondary {
+    background-color: #e4e6eb;
+    color: #050505;
+}
+
+.btn-secondary:hover {
+    background-color: #d8dadf;
+}
+
+.btn-success {
+    background-color: #42b72a;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #36a420;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: #65676b;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.btn-text:hover {
+    background-color: #f0f2f5;
+}
+
+.btn-like.liked {
+    color: #1877f2;
+    font-weight: 600;
+}
+
+.btn-like.liked .feather {
+    fill: #1877f2;
+}
+
+/* Tambahkan di bagian BUTTON STYLES */
+.btn-icon {
+    padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Update header styles */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddfe2;
+}
+
+.form-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* ==================== */
+/* FORM STYLES */
+/* ==================== */
+.reply-form-container {
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.reply-form-container h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group textarea {
+    width: 96%;
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccd0d5;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    justify-content: center;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* ==================== */
+/* UTILITY CLASSES */
+/* ==================== */
+.full-width {
+    width: 100%;
+}
+
+.no-results {
+    text-align: center;
+    color: #65676b;
+    padding: 3rem 1rem;
+    font-style: italic;
+}
+
+/* ==================== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ==================== */
+@media (max-width: 768px) {
+    .community-container {
+        margin-top: 80px;
+    }
+
+    .community-detail-header {
+        height: 280px;
+        margin-top: 50px;
+    }
+
+    .header-content h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .thread-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .thread-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .thread-stats {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
